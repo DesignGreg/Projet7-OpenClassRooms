@@ -1,0 +1,8 @@
+--- Intégrer une Google Map ---
+https://markus.oberlehner.net/blog/using-the-google-maps-api-with-vue/
+
+--- Learn Vuex ---
+https://scrimba.com/g/gvuex
+
+--- Learn Vue Router ---
+https://router.vuejs.org/
