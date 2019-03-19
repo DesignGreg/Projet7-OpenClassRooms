@@ -1,5 +1,5 @@
 --- Intégrer une Google Map ---
-https://markus.oberlehner.net/blog/using-the-google-maps-api-with-vue/
+https://medium.com/founders-factory/building-a-custom-google-map-component-with-vue-js-d1c01ddd0b0a
 
 --- Learn Vuex ---
 https://scrimba.com/g/gvuex

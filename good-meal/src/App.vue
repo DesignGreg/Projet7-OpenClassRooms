@@ -1,32 +1,48 @@
 <template>
-	<div id="app">
-		<img alt="Vue logo" src="./assets/logo.png">
-		<HelloWorld msg="Welcome to Your Vue.js App"></HelloWorld>
-		<Map></Map>
-	</div>
+  <div id="app">
+    <div class="container container__first">
+      <div class="row">
+        <div class="col-xl-1"></div>
+        <header-app class="col-xl-6"></header-app>
+        <div class="col-xl-5"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-1"></div>
+        <google-map class="col-xl-7" name="restaurantMap"></google-map>
+        <list-app class="col-xl-4"></list-app>
+
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
-	import HelloWorld from './components/HelloWorld.vue'
-	import Map from './components/Map.vue'
+  import GoogleMap from './components/core-components/GoogleMap.vue'
+  import Header from './components/core-components/Header.vue'
+  import List from './components/core-components/List.vue'
 
-	export default {
-		name: 'app',
+  export default {
+    name: 'app',
 
-		components: {
-			HelloWorld,
-			Map
-		}
-	}
+    components: {
+      GoogleMap,
+      "header-app": Header,
+      "list-app": List
+    }
+  }
 </script>
 
 <style>
-	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
-	}
+  * {
+    margin: 0;
+    padding: 0;
+    font-size: 10px;
+  }
+  
+  .container__first {
+    margin-bottom: 10rem;
+  }
 </style>
