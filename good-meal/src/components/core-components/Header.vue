@@ -7,7 +7,7 @@
 <script>
   export default {
     name: 'header-app',
-    data: function () {
+    data: function() {
       return {
         title: "Good Meal",
         image: require('../../assets/Chef_Hat.png')
