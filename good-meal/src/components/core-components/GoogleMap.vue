@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="main main__google-map" v-bind:id="mapName">
+  <div class="main">
+    <div class="main__google-map" v-bind:id="mapName">
     </div>
   </div>
 </template>
@@ -18,7 +18,8 @@
         }],
         map: null,
         bounds: null,
-        markers: []
+        markers: [],
+        infoWindow: new google.maps.InfoWindow
       }
     },
     mounted: function() {
@@ -30,6 +31,7 @@
         center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
       }
       this.map = new google.maps.Map(element, options);
+
       this.markerCoordinates.forEach((coord) => {
         const position = new google.maps.LatLng(coord.latitude, coord.longitude);
         const marker = new google.maps.Marker({
@@ -40,16 +42,49 @@
         // Pour avoir tous les marqueurs sur la map si plusieurs marqueurs
         //        this.map.fitBounds(this.bounds.extend(position))
       });
+    },
+    methods: {
+      addGeolocation: function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      },
+      handleGeolocation(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+          'Error: The Geolocation service failed.' :
+          'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
     }
   };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .main {
+    background: red;
+  }
+  
   .main__google-map {
     width: 100%;
     height: 600px;
     margin: 0 auto;
-    background: gray;
+    border: 2px solid black;
   }
 </style>

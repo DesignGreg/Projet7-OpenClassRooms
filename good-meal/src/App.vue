@@ -3,8 +3,8 @@
     <div class="container container__first">
       <div class="row">
         <div class="col-xl-1"></div>
-        <header-app class="col-xl-6"></header-app>
-        <div class="col-xl-5"></div>
+        <header-app class="col-xl-7"></header-app>
+        <div class="col-xl-4"></div>
       </div>
     </div>
     <div class="container">
@@ -12,7 +12,6 @@
         <div class="col-xl-1"></div>
         <google-map class="col-xl-7" name="restaurantMap"></google-map>
         <list-app class="col-xl-4"></list-app>
-
       </div>
     </div>
 
@@ -41,7 +40,7 @@
     padding: 0;
     font-size: 10px;
   }
-  
+
   .container__first {
     margin-bottom: 10rem;
   }

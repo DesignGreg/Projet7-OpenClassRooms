@@ -1,0 +1,116 @@
+[
+  {
+    "restaurantName": "Bronco",
+    "address": "93 Boulevard du Montparnasse, 75006 Paris",
+    "description": "Très bon restaurant de Plancha, cuisine généreuse",
+    "lat": 48.84877,
+    "long": 2.327682,
+    "ratings": [
+      {
+        "stars": 4,
+        "author": "Marc",
+        "comment": "Un excellent restaurant, j'y reviendrai ! Par contre il vaut mieux aimer la viande."
+         },
+      {
+        "stars": 5,
+        "author": "Sylvain",
+        "comment": "Tout simplement mon restaurant préféré !"
+         }
+      ]
+   },
+  {
+    "restaurantName": "Babalou",
+    "address": "17 rue Stanisla, 75006 Paris",
+    "description": "Des pizzas comme en Italie, fine et gourmande",
+    "lat": 48.842961,
+    "long": 2.327446,
+    "ratings": [
+      {
+        "stars": 5,
+        "author": "Elodie",
+        "comment": "Une minuscule pizzeria délicieuse cachée juste à côté du Sacré choeur !"
+         },
+      {
+        "stars": 3,
+        "author": "Paul",
+        "comment": "J'ai trouvé ça correct, sans plus"
+         }
+      ]
+   },
+  {
+    "restaurantName": "Brochette",
+    "address": "96 Boulevard du Montparnasse, 75014 Paris",
+    "description": "Un restaurant qui vous fera oublier votre barbecue !",
+    "lat": 48.842502,
+    "long": 2.327345,
+    "ratings": [
+      {
+        "stars": 5,
+        "author": "Bryan",
+        "comment": "La meilleure viande grillée au monde"
+         },
+      {
+        "stars": 3,
+        "author": "Sophie",
+        "comment": "Très bon !"
+         }
+      ]
+   },
+  {
+    "restaurantName": "Fine Cuisine",
+    "address": "102 Boulevard du Montparnasse, 75014 Paris",
+    "description": "Quand Healthy et Gastro s'allient pour votre repas !",
+    "lat": 48.842272,
+    "long": 2.328149,
+    "ratings": [
+      {
+        "stars": 1,
+        "author": "Tristan",
+        "comment": "Rien dans l'assiette. Pour ce prix !"
+         },
+      {
+        "stars": 2,
+        "author": "Anne",
+        "comment": "Correct mais trop cher"
+         }
+      ]
+   },
+  {
+    "restaurantName": "Italia Supreme",
+    "address": "134 Boulevard Raspail, 75006 Paris",
+    "description": "Le resto de la pizza, en plus en illimité !",
+    "lat": 48.842571,
+    "long": 2.329217,
+    "ratings": [
+      {
+        "stars": 5,
+        "author": "Vincent",
+        "comment": "Formule illimité de ouf ! Pizza à volonté !!!"
+         },
+      {
+        "stars": 3,
+        "author": "Pauline",
+        "comment": "Beaucoup (trop) à manger et juste bon..."
+         }
+      ]
+   },
+  {
+    "restaurantName": "Bangkok",
+    "address": "145 Boulevard Raspail, 75006 Paris",
+    "description": "Toutes les saveurs de l'Asie dans votre assiette",
+    "lat": 48.842270,
+    "long": 2.329748,
+    "ratings": [
+      {
+        "stars": 4,
+        "author": "Camille",
+        "comment": "Plein de produits, de saveurs, à tester !"
+         },
+      {
+        "stars": 1,
+        "author": "Sarah",
+        "comment": "Genre malade le lendemain, super..."
+         }
+      ]
+   }
+]
