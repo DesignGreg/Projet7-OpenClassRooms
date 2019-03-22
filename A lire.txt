@@ -6,3 +6,9 @@ https://scrimba.com/g/gvuex
 
 --- Learn Vue Router ---
 https://router.vuejs.org/
+
+--- Use arrays ---
+https://stackoverflow.com/questions/16626735/how-to-loop-through-an-array-containing-objects-and-access-their-properties
+
+--- Create Button Vuejs ---
+https://codeburst.io/creating-reusable-components-with-vue-js-button-component-503167facfde

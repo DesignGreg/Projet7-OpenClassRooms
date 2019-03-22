@@ -6,7 +6,9 @@
         <ul class="aside__list">
           <li class="aside__name"> {{ data.restaurantName }} </li>
           <li class="aside__description"> {{ data.description }} </li>
+          <li class="aside__button-add-comment"><button-add-comment :onClick="consoleClick">JJJ</button-add-comment></li>
         </ul>
+<!--        <div> {{ calculateSumRatings(1) }} </div>-->
       </div>
     </div>
   </div>
@@ -14,6 +16,7 @@
 
 
 <script>
+  import ButtonAddComment from '../side-components/ButtonAddComment.vue'
   const axios = require('axios');
 
   export default {
@@ -21,8 +24,13 @@
     data: function() {
       return {
         title: "Restaurants",
-        info: null
+        info: [],
+        sumRatings: [],
+        averageRatings: null
       }
+    },
+    components: {
+      "button-add-comment": ButtonAddComment
     },
     mounted: function() {
       axios
@@ -44,11 +52,20 @@
         })
     },
     methods: {
-
+      consoleClick() {
+        console.log('GGHH')
+      }
     },
-    computed: {
-      // Pour calculer moyenne des ratings
-    }
+//    computed: {
+//      calculateSumRatings: function(value) {
+//        this.info[value].ratings.forEach(function(element) {
+//          this.sumRatings += element.stars
+//        });
+//          return {
+//
+//          }
+//      }
+//    }
   }
 </script>
 

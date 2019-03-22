@@ -35,7 +35,7 @@
       "header-app": Header,
       "list-app": List,
       "footer-app": Footer
-    }
+    },
   }
 </script>
 
