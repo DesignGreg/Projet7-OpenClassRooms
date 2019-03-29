@@ -1,16 +1,9 @@
 <template>
   <div class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-xl-1"></div>
-        <div class="footer__component col-xl-7"></div>
-        <div class="footer__native col-xl-3">
-          <p> {{ companyName }} </p>
-          <p> {{ companyAdress }} </p>
-          <p> {{ companyCity }} </p>
-        </div>
-        <div class="col-xl-1"></div>
-      </div>
+    <div class="footer__info">
+      <p> {{ companyName }} </p>
+      <p> {{ companyAdress }} </p>
+      <p> {{ companyCity }} </p>
     </div>
   </div>
 </template>
@@ -31,10 +24,6 @@
 
 
 <style>
-  .footer__component {
-    background: green;
-  }
-  
   .footer__native {
     background: blue;
   }

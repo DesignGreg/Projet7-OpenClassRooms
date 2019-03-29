@@ -1,5 +1,7 @@
 <template>
-<div></div>
+  <div class="legal">
+    
+  </div>
 </template>
 
 
@@ -9,5 +11,5 @@
 
 
 <style scoped>
-
+  
 </style>

@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  import mapInterface from '../../interfaces/mapInterface.js'
-//  console.log(mapInterface)
+//  import mapInterface from '../../interfaces/mapInterface.js'
+
   export default {
     name: 'google-map',
     props: ['name'],
@@ -24,36 +24,27 @@
         infoWindow: new google.maps.InfoWindow
       }
     },
-//    async beforeCreate () {
-//      try {
-//        console.log('beforeCreate avant load api')
-//        await mapInterface.loadApi()
-//        console.log('beforeCreate apres load api')
-//      } catch (err) {
-//        console.log(err)
-//      }
-//    },
+
     mounted: function() {
-      console.log(this.$refs)
       this.bounds = new google.maps.LatLngBounds();
       const element = this.$refs.mainMap
 
-      this.map = mapInterface.createMap(element, this.markerCoordinates[0], 18)
+//      this.map = mapInterface.createMap(element, this.markerCoordinates[0], 18)
       
-//      const mapCentre = this.markerCoordinates[0]
-//      const options = {
-//        zoom: 18,
-//        center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-//      }
-//      this.map = new google.maps.Map(element, options);
+      const mapCentre = this.markerCoordinates[0]
+      const options = {
+        zoom: 18,
+        center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
+      }
+      this.map = new google.maps.Map(element, options);
       
       this.markerCoordinates.forEach((coord) => {
-        const marker = mapInterface.createMarker(coord)
-//        const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-//        const marker = new google.maps.Marker({
-//          position,
-//          map: this.map
-//        });
+//        const marker = mapInterface.createMarker(coord)
+        const position = new google.maps.LatLng(coord.latitude, coord.longitude);
+        const marker = new google.maps.Marker({
+          position,
+          map: this.map
+        });
         this.markers.push(marker)
         // Pour avoir tous les marqueurs sur la map si plusieurs marqueurs
         //        this.map.fitBounds(this.bounds.extend(position))

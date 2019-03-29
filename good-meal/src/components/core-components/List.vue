@@ -2,70 +2,61 @@
   <div class="aside">
     <div class="aside__container">
       <h2 class="aside__title"> {{ title }} </h2>
-      <div class="aside__data" v-for="data in info">
+
+
+      <div class="aside__data" v-for="data in displayRestaurantInfo" :key="data.restaurantName">
         <ul class="aside__list">
-          <li class="aside__name"> {{ data.restaurantName }} </li>
+          <li class="aside__name"> {{ data.restaurantName }} <span class="aside__score">{{ data.averageRating }}</span> </li>
           <li class="aside__description"> {{ data.description }} </li>
-          <li class="aside__button-add-comment"><button-add-comment :onClick="consoleClick">JJJ</button-add-comment></li>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-6">
+                <li class="aside__button-read-comment"><button-read-comments :onClick="consoleClick"><router-link to='/read-comments'>Lire Commentaires</router-link></button-read-comments></li>
+              </div>
+              <div class="col-xl-6">
+                <li class="aside__button-add-comment"><button-add-comment :onClick="consoleClick"><router-link to='/read-comments'>Ajouter commentaire</router-link></button-add-comment></li>
+              </div>
+              
+            </div>
+          </div>
+          
         </ul>
-<!--        <div> {{ calculateSumRatings(1) }} </div>-->
       </div>
+
     </div>
   </div>
 </template>
 
 
 <script>
+import ButtonReadComments from '../side-components/ButtonReadComments.vue'
   import ButtonAddComment from '../side-components/ButtonAddComment.vue'
-  const axios = require('axios');
 
   export default {
     name: 'header-app',
     data: function() {
       return {
         title: "Restaurants",
-        info: [],
-        sumRatings: [],
-        averageRatings: null
+
       }
     },
-    components: {
-      "button-add-comment": ButtonAddComment
-    },
-    mounted: function() {
-      axios
-        .get('http://localhost:8080/restaurantList.json')
-        .then(response => (this.info = response.data))
-        .catch(function(error) {
-          if (error.response) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            console.log(error.response.headers);
-          } else if (error.request) {
-            console.log(error.request);
-          } else {
-            console.log('Error', error.message);
-          }
-        })
-        .then(function() {
+  components: {
+        ButtonReadComments,
+        ButtonAddComment
+    
+  },
 
-        })
-    },
     methods: {
       consoleClick() {
         console.log('GGHH')
       }
     },
-//    computed: {
-//      calculateSumRatings: function(value) {
-//        this.info[value].ratings.forEach(function(element) {
-//          this.sumRatings += element.stars
-//        });
-//          return {
-//
-//          }
-//      }
-//    }
+    computed:  {
+      displayRestaurantInfo() {
+        return this.$store.getters.getRestaurantInfo;
+      }
+    }
   }
 </script>
 
@@ -85,6 +76,10 @@
   .aside__title {
     font-size: 4rem;
   }
+  
+  .aside__score {
+    font-size: 2rem;
+  }
 
   .aside__data {}
 
@@ -99,5 +94,9 @@
 
   .aside__description {
     font-size: 2rem;
+  }
+  
+  .row {
+    margin: 0;
   }
 </style>

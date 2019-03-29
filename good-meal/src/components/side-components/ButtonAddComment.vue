@@ -1,7 +1,8 @@
 <template>
  <div>
-    <button class="button button-add-comment" v-bind:click="onClick"></button>
-    <slot></slot>
+    <button class="button button-add-comment" v-bind:click="onClick">
+      <slot></slot>
+    </button>
   </div>
 </template>
 

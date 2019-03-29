@@ -12,11 +12,14 @@
         <google-map class="col-xl-7" name="restaurantMap"></google-map>
         <list-app class="col-xl-4"></list-app>
       </div>
-      
+
       <div class="row row__third">
-        <footer-app class="col-xl-12"></footer-app>
+        <div class="col-xl-1"></div>
+        <rooter-view class="col-xl-6"></rooter-view>
+        <footer-app class="col-xl-4"></footer-app>
+        <div class="col-xl-1"></div>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -36,6 +39,9 @@
       "list-app": List,
       "footer-app": Footer
     },
+    mounted() {
+      this.$store.dispatch('getData')
+    }
   }
 </script>
 
@@ -46,6 +52,13 @@
     font-size: 10px;
   }
   
+  html {
+    background-image: url(assets/Background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+
   .row {
     margin-bottom: 10rem;
   }
