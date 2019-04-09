@@ -33,13 +33,14 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 
 <script>
   //  import ButtonReadComments from '../side-components/ButtonReadComments.vue'
   //  import ButtonAddComment from '../side-components/ButtonAddComment.vue'
-  import SingleRestaurant from './SingleRestaurant.vue'
+  import SingleRestaurant from './SingleRestaurant.vue';
   //  import ButtonSortRestaurants from '../side-components/ButtonSortRestaurants.vue'
 
   export default {
@@ -54,8 +55,7 @@
       //      ButtonReadComments,
       //      ButtonAddComment,
       //      ButtonSortRestaurants,
-      "single-restaurant-app": SingleRestaurant
-
+      "single-restaurant-app": SingleRestaurant,
     },
     computed: {
       displayRestaurantInfo() {

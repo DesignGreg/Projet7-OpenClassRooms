@@ -2,12 +2,14 @@
   <div class="container">
     <div class="row row__first">
       <div class="header col-xl-12">
-        <h1 class="header__title"><img class="header__logo" v-bind:src="image" alt="Chapeau de Cuisinier">
-        <span class="header__title-firstWordFirstLetter"> {{titleFirstWordFirstLetter}}</span>
-        <span class="header__title-firstWordOtherLetters">{{titleFirstWordOtherLetters}} </span>
-        <span class="header__title-secondWordFirstLetter">{{titleSecondWordFirstLetter}}</span>
-        <span class="header__title-secondWordOtherLetters">{{titleSecondWordOtherLetters}}</span> 
-        </h1>
+        <router-link class="header__link" :to='"/"'>
+          <h1 class="header__title"><img class="header__logo" v-bind:src="image" alt="Chapeau de Cuisinier">
+            <span class="header__title-firstWordFirstLetter"> {{titleFirstWordFirstLetter}}</span>
+            <span class="header__title-firstWordOtherLetters">{{titleFirstWordOtherLetters}} </span>
+            <span class="header__title-secondWordFirstLetter">{{titleSecondWordFirstLetter}}</span>
+            <span class="header__title-secondWordOtherLetters">{{titleSecondWordOtherLetters}}</span>
+          </h1>
+        </router-link>
       </div>
     </div>
     <div class="row row__second">
@@ -60,11 +62,11 @@
   .row__first {
     margin-bottom: 0;
   }
-  
+
   .row__second {
     margin-bottom: 0;
   }
-  
+
   .row__third {
     margin-top: 5rem;
     margin-bottom: 0;
@@ -75,18 +77,18 @@
     color: #399A56;
     font-weight: bold;
   }
-  
+
   .header__title-firstWordOtherLetters {
     font-size: 10rem;
     font-weight: lighter;
   }
-  
+
   .header__title-secondWordFirstLetter {
     font-size: 10rem;
-    color:#BD0000;
+    color: #BD0000;
     font-weight: bold;
   }
-  
+
   .header__title-secondWordOtherLetters {
     font-size: 10rem;
     font-weight: lighter;
@@ -96,26 +98,31 @@
     width: 20%;
     vertical-align: bottom;
   }
-  
+
   .image__android {
     width: 90px;
     height: 30px;
   }
-  
+
   .image__apple {
     width: 90px;
     height: 30px;
   }
-  
+
   .image__facebook {
     width: 30px;
   }
-  
+
   .image__twitter {
     width: 30px;
   }
-  
+
   .image__instagram {
     width: 30px;
+  }
+  
+  .header__link {
+    text-decoration: none;
+    color: #2A2A2A;
   }
 </style>

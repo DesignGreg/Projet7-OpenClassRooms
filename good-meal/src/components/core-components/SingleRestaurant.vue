@@ -9,14 +9,14 @@
                 <div class="col-xl-6">
                   <li class="aside__button-read-comment">
                     <button-read-comments :onClick="button">
-                      <router-link :to='"/read-comments/" + index'>Lire Commentaires</router-link>
+                      <router-link class="button-text" :to='"/read-comments/" + index'>Les avis</router-link>
                     </button-read-comments>
                   </li>
                 </div>
                 <div class="col-xl-6">
                   <li class="aside__button-add-comment">
                     <button-add-comment :onClick="button">
-                      <router-link :to='"/add-comment/" + index'>Ajouter commentaire</router-link>
+                      <router-link class="button-text" :to='"/add-comment/" + index'>Votre avis</router-link>
                     </button-add-comment>
                   </li>
                 </div>
@@ -76,5 +76,11 @@
   .row__first {
     margin: 0;
     margin-top: 1rem;
+  }
+  
+  .button-text {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #EBEBEB;
   }
 </style>

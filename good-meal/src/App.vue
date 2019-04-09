@@ -14,7 +14,9 @@
       </div>
 
       <div class="row row__third">
-        <router-view class="col-xl-7"></router-view>
+        <div class="col-xl-7">
+          <router-view></router-view>
+        </div>
         <div class="col-xl-1"></div>
         <footer-app class="col-xl-4"></footer-app>
       </div>
@@ -27,7 +29,7 @@
   import Header from './components/core-components/Header.vue';
   import List from './components/core-components/List.vue';
   import Footer from './components/core-components/Footer.vue';
-  
+
   export default {
     name: 'app',
 
@@ -49,12 +51,13 @@
     padding: 0;
     font-size: 10px;
   }
-  
+
   html {
     background-image: url(assets/Background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
   }
 
   .row {
