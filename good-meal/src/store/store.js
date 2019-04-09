@@ -22,8 +22,15 @@ export const store = new Vuex.Store({
           averageRating: Math.round(sum / restaurant.ratings.length),
         }
       })
-    },
-    
+    }, 
+    getComments: state => {
+      console.log(state);
+      return (restaurantID) => {
+        const restaurant = state.data[restaurantID];
+        return restaurant.ratings;
+      }
+      
+    }
   },
   mutations: {
     setData: (state, {info}) => {

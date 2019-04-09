@@ -2,34 +2,32 @@
   <div id="app">
     <div class="container">
       <div class="row row__first">
-        <div class="col-xl-1"></div>
         <header-app class="col-xl-7"></header-app>
+        <div class="col-xl-1"></div>
         <div class="col-xl-4"></div>
       </div>
 
       <div class="row row__second">
-        <div class="col-xl-1"></div>
         <google-map class="col-xl-7" name="restaurantMap"></google-map>
+        <div class="col-xl-1"></div>
         <list-app class="col-xl-4"></list-app>
       </div>
 
       <div class="row row__third">
+        <router-view class="col-xl-7"></router-view>
         <div class="col-xl-1"></div>
-        <rooter-view class="col-xl-6"></rooter-view>
         <footer-app class="col-xl-4"></footer-app>
-        <div class="col-xl-1"></div>
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
-  import GoogleMap from './components/core-components/GoogleMap.vue'
-  import Header from './components/core-components/Header.vue'
-  import List from './components/core-components/List.vue'
-  import Footer from './components/core-components/Footer.vue'
-
+  import GoogleMap from './components/core-components/GoogleMap.vue';
+  import Header from './components/core-components/Header.vue';
+  import List from './components/core-components/List.vue';
+  import Footer from './components/core-components/Footer.vue';
+  
   export default {
     name: 'app',
 
@@ -60,6 +58,6 @@
   }
 
   .row {
-    margin-bottom: 10rem;
+    margin-bottom: 3rem;
   }
 </style>

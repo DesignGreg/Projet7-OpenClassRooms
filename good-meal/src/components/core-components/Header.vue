@@ -2,7 +2,12 @@
   <div class="container">
     <div class="row row__first">
       <div class="header col-xl-12">
-        <h1 class="header__title"><img class="header__logo" v-bind:src="image" alt="Chapeau de Cuisinier"> {{ title }}</h1>
+        <h1 class="header__title"><img class="header__logo" v-bind:src="image" alt="Chapeau de Cuisinier">
+        <span class="header__title-firstWordFirstLetter"> {{titleFirstWordFirstLetter}}</span>
+        <span class="header__title-firstWordOtherLetters">{{titleFirstWordOtherLetters}} </span>
+        <span class="header__title-secondWordFirstLetter">{{titleSecondWordFirstLetter}}</span>
+        <span class="header__title-secondWordOtherLetters">{{titleSecondWordOtherLetters}}</span> 
+        </h1>
       </div>
     </div>
     <div class="row row__second">
@@ -38,7 +43,10 @@
     name: 'header-app',
     data: function() {
       return {
-        title: "Good Meal",
+        titleFirstWordFirstLetter: "G",
+        titleFirstWordOtherLetters: "ood",
+        titleSecondWordFirstLetter: "M",
+        titleSecondWordOtherLetters: "eal",
         image: require('../../assets/Chef_Hat.png')
       }
     },
@@ -61,11 +69,27 @@
     margin-top: 5rem;
     margin-bottom: 0;
   }
-  
-  .header {}
 
-  .header__title {
+  .header__title-firstWordFirstLetter {
     font-size: 10rem;
+    color: #399A56;
+    font-weight: bold;
+  }
+  
+  .header__title-firstWordOtherLetters {
+    font-size: 10rem;
+    font-weight: lighter;
+  }
+  
+  .header__title-secondWordFirstLetter {
+    font-size: 10rem;
+    color:#BD0000;
+    font-weight: bold;
+  }
+  
+  .header__title-secondWordOtherLetters {
+    font-size: 10rem;
+    font-weight: lighter;
   }
 
   .header__logo {

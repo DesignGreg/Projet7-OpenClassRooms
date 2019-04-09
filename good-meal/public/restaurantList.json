@@ -15,6 +15,26 @@
         "stars": 5,
         "author": "Sylvain",
         "comment": "Tout simplement mon restaurant préféré !"
+         },
+      {
+        "stars": 5,
+        "author": "Patrick",
+        "comment": "Généreux !!! Rien à dire de plus."
+         },
+      {
+        "stars": 4,
+        "author": "Marc",
+        "comment": "Un excellent restaurant, j'y reviendrai ! Par contre il vaut mieux aimer la viande."
+         },
+      {
+        "stars": 5,
+        "author": "Sylvain",
+        "comment": "Tout simplement mon restaurant préféré !"
+         },
+      {
+        "stars": 5,
+        "author": "Patrick",
+        "comment": "Généreux !!! Rien à dire de plus."
          }
       ]
    },
@@ -34,6 +54,26 @@
         "stars": 3,
         "author": "Paul",
         "comment": "J'ai trouvé ça correct, sans plus"
+         },
+      {
+        "stars": 2,
+        "author": "Yasmine",
+        "comment": "Pâtes froides !"
+         },
+      {
+        "stars": 5,
+        "author": "Elodie",
+        "comment": "Une minuscule pizzeria délicieuse cachée juste à côté du Sacré choeur !"
+         },
+      {
+        "stars": 3,
+        "author": "Paul",
+        "comment": "J'ai trouvé ça correct, sans plus"
+         },
+      {
+        "stars": 2,
+        "author": "Yasmine",
+        "comment": "Pâtes froides !"
          }
       ]
    },
@@ -53,6 +93,26 @@
         "stars": 3,
         "author": "Sophie",
         "comment": "Très bon !"
+         },
+      {
+        "stars": 4,
+        "author": "Andrei",
+        "comment": "Du solide ! Tentez l'entrecôte !"
+         },
+      {
+        "stars": 5,
+        "author": "Bryan",
+        "comment": "La meilleure viande grillée au monde"
+         },
+      {
+        "stars": 3,
+        "author": "Sophie",
+        "comment": "Très bon !"
+         },
+      {
+        "stars": 4,
+        "author": "Andrei",
+        "comment": "Du solide ! Tentez l'entrecôte !"
          }
       ]
    },
@@ -72,6 +132,26 @@
         "stars": 2,
         "author": "Anne",
         "comment": "Correct mais trop cher"
+         },
+      {
+        "stars": 3,
+        "author": "Hélène",
+        "comment": "Cher mais pas mal et le personnel est sympa"
+         },
+      {
+        "stars": 1,
+        "author": "Tristan",
+        "comment": "Rien dans l'assiette. Pour ce prix !"
+         },
+      {
+        "stars": 2,
+        "author": "Anne",
+        "comment": "Correct mais trop cher"
+         },
+      {
+        "stars": 3,
+        "author": "Hélène",
+        "comment": "Cher mais pas mal et le personnel est sympa"
          }
       ]
    },
@@ -91,6 +171,26 @@
         "stars": 3,
         "author": "Pauline",
         "comment": "Beaucoup (trop) à manger et juste bon..."
+         },
+      {
+        "stars": 4,
+        "author": "Théo",
+        "comment": "Entre potes excellent l'illimité !"
+         },
+      {
+        "stars": 5,
+        "author": "Vincent",
+        "comment": "Formule illimité de ouf ! Pizza à volonté !!!"
+         },
+      {
+        "stars": 3,
+        "author": "Pauline",
+        "comment": "Beaucoup (trop) à manger et juste bon..."
+         },
+      {
+        "stars": 4,
+        "author": "Théo",
+        "comment": "Entre potes excellent l'illimité !"
          }
       ]
    },
@@ -110,6 +210,26 @@
         "stars": 1,
         "author": "Sarah",
         "comment": "Genre malade le lendemain, super..."
+         },
+      {
+        "stars": 4,
+        "author": "Peter",
+        "comment": "Très bon"
+         },
+      {
+        "stars": 4,
+        "author": "Camille",
+        "comment": "Plein de produits, de saveurs, à tester !"
+         },
+      {
+        "stars": 1,
+        "author": "Sarah",
+        "comment": "Genre malade le lendemain, super..."
+         },
+      {
+        "stars": 4,
+        "author": "Peter",
+        "comment": "Très bon"
          }
       ]
    }

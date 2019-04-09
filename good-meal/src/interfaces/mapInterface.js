@@ -2,7 +2,7 @@ export default {
 //  loadApi,
   createMap,
   createMarker
-}
+};
 
 // Your personal API key.
 // Get it here: https://console.cloud.google.com/google/maps-apis
@@ -59,4 +59,6 @@ function createMarker (coord) {
     position,
     map: this.map
   });
+  
+  
 }
