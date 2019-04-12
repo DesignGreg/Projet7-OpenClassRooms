@@ -24,8 +24,8 @@
     width: 90%;
     font-size: 2rem;
     border-radius: 2rem;
-    background-color: #399A56;
-    border: 1px solid #399A56;
+    background-color: #26A65B;
+    border: 1px solid #26A65B;
     outline: none;
   }
   

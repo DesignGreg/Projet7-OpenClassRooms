@@ -7,7 +7,6 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state: {
     data: [],
-    averageRatings: null,
   },
   getters: {
     getRestaurantInfo: state => {

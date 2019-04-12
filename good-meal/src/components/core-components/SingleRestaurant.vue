@@ -2,7 +2,8 @@
   <div class="singleRestaurant">
     <div class="aside__data" v-for="(data,index) in displayRestaurantInfo" :key="data.restaurantName">
           <ul class="aside__list">
-            <li class="aside__name"> {{ data.restaurantName }} <span class="aside__score">{{ data.averageRating }}</span> </li>
+            <li class="aside__name"> {{ data.restaurantName }}</li>
+            <li><score-app :star-number="data.averageRating"></score-app></li>
             <li class="aside__description"> {{ data.description }} </li>
             <div class="container">
               <div class="row row__first">
@@ -29,8 +30,9 @@
 
 
 <script>
-  import ButtonReadComments from '../side-components/ButtonReadComments.vue'
-  import ButtonAddComment from '../side-components/ButtonAddComment.vue'
+  import ButtonReadComments from '../side-components/ButtonReadComments.vue';
+  import ButtonAddComment from '../side-components/ButtonAddComment.vue';
+  import ScoreStars from '../side-components/ScoreStars.vue';
   
   export default {
     name: "single-restaurant-app",
@@ -40,6 +42,7 @@
     components: {
       ButtonReadComments,
       ButtonAddComment,
+      "score-app": ScoreStars
     },
     methods: {
       button: function() {
@@ -57,16 +60,17 @@
 
 <style scoped>
   .aside__data {
-    
+
   }
 
   .aside__list {
     list-style-type: none;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
 
   .aside__name {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    font-weight: bold;
   }
 
   .aside__description {

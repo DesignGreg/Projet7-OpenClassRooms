@@ -90,7 +90,7 @@
     width: 100%;
     height: 600px;
     margin: 0 auto;
-    border: 2px solid #399A56;
+    border: 2px solid #26A65B;
     border-radius: 2rem;
   }
 </style>

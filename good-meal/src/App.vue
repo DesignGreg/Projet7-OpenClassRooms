@@ -15,7 +15,9 @@
 
       <div class="row row__third">
         <div class="col-xl-7">
-          <router-view></router-view>
+          <transition name="module">
+            <router-view class="module"></router-view>
+          </transition>
         </div>
         <div class="col-xl-1"></div>
         <footer-app class="col-xl-4"></footer-app>
@@ -32,7 +34,7 @@
 
   export default {
     name: 'app',
-
+    
     components: {
       GoogleMap,
       "header-app": Header,
@@ -63,4 +65,49 @@
   .row {
     margin-bottom: 3rem;
   }
+  
+  .module {
+    margin-top: -20rem;
+  }
+  
+  .module-enter {
+    opacity: 0;
+    margin-top: 20rem;
+  }
+  
+  .module-enter-active {
+    transition-property: all;
+    transition-duration: 1s;
+  }
+  
+  .module-leave-active {
+    transition-property: all;
+    transition-duration: .2s;
+  }
+  
+  .module-enter-to {
+    margin-top: -20rem;
+  }
+  
+  .module-leave-to {
+    margin-top: 20rem;
+    opacity: 0
+  }
+
+/*
+  .module-enter-active,
+  .module-leave-active {
+    transition-property: opacity;
+    transition-duration: .25s;
+  }
+
+  .module-enter-active {
+    transition-delay: .25s;
+  }
+
+  .module-enter,
+  .module-leave-active {
+    opacity: 0
+  }
+*/
 </style>

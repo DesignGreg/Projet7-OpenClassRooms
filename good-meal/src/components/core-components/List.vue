@@ -4,32 +4,6 @@
     <div class="aside__main-container">
       <div class="aside__second-container">
         <single-restaurant-app></single-restaurant-app>
-        <!--
-        <div class="aside__data" v-for="(data,index) in displayRestaurantInfo" :key="data.restaurantName">
-          <ul class="aside__list">
-            <li class="aside__name"> {{ data.restaurantName }} <span class="aside__score">{{ data.averageRating }}</span> </li>
-            <li class="aside__description"> {{ data.description }} </li>
-            <div class="container">
-              <div class="row row__first">
-                <div class="col-xl-6">
-                  <li class="aside__button-read-comment">
-                    <button-read-comments>
-                      <router-link :to='"/read-comments/" + index'>Lire Commentaires</router-link>
-                    </button-read-comments>
-                  </li>
-                </div>
-                <div class="col-xl-6">
-                  <li class="aside__button-add-comment">
-                    <button-add-comment>
-                      <router-link :to='"/add-comment/" + index'>Ajouter commentaire</router-link>
-                    </button-add-comment>
-                  </li>
-                </div>
-              </div>
-            </div>
-          </ul>
-        </div>
--->
       </div>
     </div>
   </div>
@@ -38,10 +12,8 @@
 
 
 <script>
-  //  import ButtonReadComments from '../side-components/ButtonReadComments.vue'
-  //  import ButtonAddComment from '../side-components/ButtonAddComment.vue'
   import SingleRestaurant from './SingleRestaurant.vue';
-  //  import ButtonSortRestaurants from '../side-components/ButtonSortRestaurants.vue'
+
 
   export default {
     name: 'header-app',
@@ -52,9 +24,6 @@
       }
     },
     components: {
-      //      ButtonReadComments,
-      //      ButtonAddComment,
-      //      ButtonSortRestaurants,
       "single-restaurant-app": SingleRestaurant,
     },
     computed: {
@@ -69,7 +38,7 @@
 <style scoped>
   .aside {
     height: 600px;
-    background: #399A56;
+    background: #26A65B;
     border: 2px solid #BD0000;
     border-radius: 2rem;
   }

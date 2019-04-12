@@ -1,6 +1,6 @@
 <template>
- <div class="add-restaurant__container">
-    <button class="button button__add-restaurant" type="button" v-bind:click="onClick">
+ <div class="validate-add-restaurant">
+    <button class="button button__validate-add-restaurant" type="button" v-bind:click="onClick">
       <slot></slot>
     </button>
   </div>
@@ -20,15 +20,14 @@
 
 
 <style scoped>
-  .add-restaurant__container {
+  .validate-add-restaurant {
     text-align: center;
     margin-top: -2rem;
   }
   
-  .button__add-restaurant {
-    width: 50%;
+  .button__validate-add-restaurant {
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #EBEBEB;
     border-radius: 2rem;
     background-color: #BD0000;
@@ -36,11 +35,11 @@
     outline: none;
   }
   
-  .button__add-restaurant:hover {
+  .button__validate-add-restaurant:hover {
     box-shadow: 2px 2px 3px #2A2A2A;
   }
   
-  .button__add-restaurant:active {
+  .button__validate-add-restaurant:active {
     box-shadow: 1px 1px 1px #2A2A2A;
   }
 </style>

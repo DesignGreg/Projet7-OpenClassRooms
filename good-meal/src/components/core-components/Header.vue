@@ -68,13 +68,13 @@
   }
 
   .row__third {
-    margin-top: 5rem;
+    margin-top: 4rem;
     margin-bottom: 0;
   }
 
   .header__title-firstWordFirstLetter {
     font-size: 10rem;
-    color: #399A56;
+    color: #26A65B;
     font-weight: bold;
   }
 
@@ -119,6 +119,10 @@
 
   .image__instagram {
     width: 30px;
+  }
+  
+  .image:hover {
+    zoom: 105%;
   }
   
   .header__link {
