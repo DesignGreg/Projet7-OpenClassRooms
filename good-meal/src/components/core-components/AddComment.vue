@@ -32,6 +32,8 @@
               <form action="" method="post" class="add-comment__form">
                 <label class="add-comment__nameLabel" for="name">Prénom</label>
                 <input class="add-comment__nameInput" type="text" name="name" id="name" v-model="nom" required>
+                <set-score-app></set-score-app>
+<!--
                 <label class="add-comment__scoreLabel" for="stars">Note</label>
                 <select class="add-comment__scoreSelect" name="stars" id="ratings" v-model="selected" required>
                   <option value="1">1</option>
@@ -40,8 +42,11 @@
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
+-->
                 <label class="add-comment__textLabel" for="comment">Commentaire</label>
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="commentaire" required></textarea>
+                
+                
                 
                 <div class="add__comments--button-container">
                   <button-validate-form-add-comments class="button-text">Confirmer</button-validate-form-add-comments>
@@ -61,6 +66,7 @@
   const axios = require('axios');
   import GoogleStreetView from './GoogleStreetView.vue';
   import ButtonValidateFormAddComments from '../side-components/ButtonValidateFormAddComments.vue';
+  import SetScoreStars from '../side-components/SetScoreStars.vue';
 
   export default {
     name: 'add-comment-app',
@@ -74,7 +80,8 @@
     },
     components: {
       "google-street-view-app": GoogleStreetView,
-      ButtonValidateFormAddComments
+      ButtonValidateFormAddComments,
+      "set-score-app": SetScoreStars
     },
     mounted() {
       axios.get('http://localhost:8080/restaurantList.json').then((response) => {
@@ -142,6 +149,7 @@
   .add-comment__nameInput {
     display: inline-block;
     height: 2rem;
+    vertical-align: top;
   }
 
   .add-comment__scoreLabel {

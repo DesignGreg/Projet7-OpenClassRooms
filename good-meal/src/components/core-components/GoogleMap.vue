@@ -16,69 +16,80 @@
     data: function() {
       return {
         mapName: this.name + "-map",
-        markerCoordinates: [{
-          latitude: 48.842492,
-          longitude: 2.328300
-        }],
+        userCoord: {},
+        markers: [],
         map: null,
         bounds: null,
-        markers: [],
-        infoWindow: ''
+        infoWindow: null,
+        position: {
+          lat: null,
+          lng: null
+        }
       }
     },
 
     mounted: function() {
       GoogleMapsLoader.load((google) => {
-        this.bounds = new google.maps.LatLngBounds();
-        const element = this.$refs.mainMap
-        this.infoWindow = new google.maps.InfoWindow;
-        const mapCentre = this.markerCoordinates[0]
-        const options = {
-          zoom: 18,
-          center: new google.maps.LatLng(mapCentre.latitude, mapCentre.longitude)
-        }
-        this.map = new google.maps.Map(element, options);
+        this.$store.watch(
+          (state, getters) => getters.getRestaurantInfo,
+          (newValue, oldValue) => {
+            // this.markers.forEach(this.removeMarker)
+            newValue.map((restaurant) => {
+              this.addMarker({
+                lat: restaurant.lat,
+                lng: restaurant.long
+              }, 'restaurant')
+            })
+          }
+        )
+          this.bounds = new google.maps.LatLngBounds();
+          const element = this.$refs.mainMap
+          this.infoWindow = new google.maps.InfoWindow;
+          const options = {
+            zoom: 18,
+          }
+          this.map = new google.maps.Map(element, options);
 
-        this.markerCoordinates.forEach((coord) => {
-          //        const marker = mapInterface.createMarker(coord)
-          const position = new google.maps.LatLng(coord.latitude, coord.longitude);
-          const marker = new google.maps.Marker({
-            position,
-            map: this.map
-          });
-          this.markers.push(marker)
-          // Pour avoir tous les marqueurs sur la map si plusieurs marqueurs
-          //        this.map.fitBounds(this.bounds.extend(position))
-        });
-      });
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+              };
+              this.userCoord = pos
+              this.addMarker(this.userCoord, 'user')
+              this.map.setCenter(pos);
+            }, function() {
+              handleLocationError(true, this.infoWindow, this.map.getCenter());
+            });
+          } else {
+            // Browser doesn't support Geolocation
+            handleLocationError(false, this.infoWindow, this.map.getCenter());
+          }
+        }),
+        pushMarkersCoordinates => {
+        
+      }  
     },
     methods: {
-      addGeolocation: function() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Loviscation found.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
+      addMarker (coord, type) {
+        let icon = ''
+        if (type === 'user') {
+          icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png'
         } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
+          icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/library_maps.png'
         }
+        console.log('j ajoute ', coord)
+        const position = new google.maps.LatLng(coord.lat, coord.lng);
+        const marker = new google.maps.Marker({
+            position,
+            map: this.map,
+            icon
+          });
+        this.markers.push(marker)
       },
-      handleGeolocation(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-          'Error: The Geolocation service failed.' :
-          'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
+      removeMarker (marker) {
+        marker.setMap(null)
       }
     }
   };

@@ -14,6 +14,11 @@
         type: Function,
         required: true
       }
+    },
+    methods: {
+      button: function() {
+        console.log('Working');
+      }
     }
   }
 </script>

@@ -49,7 +49,7 @@
         titleFirstWordOtherLetters: "ood",
         titleSecondWordFirstLetter: "M",
         titleSecondWordOtherLetters: "eal",
-        image: require('../../assets/Chef_Hat.png')
+        image: require('../../assets/Chef_Hat_White.png')
       }
     },
     methods: {

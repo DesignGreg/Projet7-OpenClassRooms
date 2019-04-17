@@ -55,7 +55,7 @@
   }
 
   html {
-    background-image: url(assets/Background.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),url(assets/Background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

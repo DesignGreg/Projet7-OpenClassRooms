@@ -3,7 +3,7 @@
     <div class="aside__data" v-for="(data,index) in displayRestaurantInfo" :key="data.restaurantName">
           <ul class="aside__list">
             <li class="aside__name"> {{ data.restaurantName }}</li>
-            <li><score-app :star-number="data.averageRating"></score-app></li>
+            <li class="aside__score"><score-app :star-number="data.averageRating"></score-app></li>
             <li class="aside__description"> {{ data.description }} </li>
             <div class="container">
               <div class="row row__first">
@@ -53,6 +53,9 @@
       displayRestaurantInfo() {
         return this.$store.getters.getRestaurantInfo;
       }
+    },
+    watch: {
+      
     }
   }
   
@@ -71,6 +74,13 @@
   .aside__name {
     font-size: 2.5rem;
     font-weight: bold;
+    display: inline-block;
+  }
+  
+  .aside__score {
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align: super
   }
 
   .aside__description {

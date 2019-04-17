@@ -7,9 +7,6 @@
 
 
 <script>
-  // Créer les 5 étoiles avec JS, en ajoutant les tags html
-  // Tant que SCORE est inférieur à ratings.stars, ajouter l'attribut checked pour remplir l'étoile
-
   export default {
 
     name: "score-app",

@@ -17,7 +17,7 @@
                   </router-link>
                 </li>
 
-                <!--                <li><score-app :star-number="data.averageRating"></score-app></li>-->
+                                <li><score-app :star-number="averageRating"></score-app></li>
 
                 <li>
                   <google-street-view-app :long="restaurantData.long" :lat="restaurantData.lat"></google-street-view-app>
@@ -58,7 +58,9 @@
     name: 'read-comments-app',
     data: function() {
       return {
-        restaurantData: [],
+        restaurantData: {
+          ratings: []
+        },
       }
     },
     components: {
@@ -80,21 +82,10 @@
       });
     },
     computed: {
-      //      displayRestaurantInfo() {
-      //        return this.$store.getters.getRestaurantInfo;
-      //      }
-      getRestaurantInfo(index) {
-        const restaurantList = this.restaurantData;
-
-        return restaurantList.map((restaurant) => {
-          const sum = restaurant.ratings.reduce((acc, rating) => {
-            return acc + rating.stars;
-          }, 0);
-          return {
-            ...restaurant,
-            averageRating: Math.round(sum / restaurant.ratings.length),
-          }
-        })
+      averageRating() {
+        return Math.round(this.restaurantData.ratings.reduce((cumulatedAverage, rating) => {
+          return cumulatedAverage + (rating.stars / this.restaurantData.ratings.length)
+        }, 0))
       }
     }
   }
@@ -165,4 +156,21 @@
   .fa-arrow-circle-down:hover {
     zoom: 105%;
   }
+  
+  /* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px #26A65B; 
+  border-radius: 1rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #BD0000; 
+  border-radius: 1rem;
+}
 </style>
