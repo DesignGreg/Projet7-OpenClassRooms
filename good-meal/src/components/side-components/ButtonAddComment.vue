@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="button__container">
     <button class="button button__add-comment" type="button" v-bind:click="onClick">
       <slot></slot>
     </button>
@@ -20,6 +20,42 @@
 
 
 <style scoped>
+  @media screen and (min-width: 446px) and (max-width: 576px) {
+    .button__add-comment {
+      width: 70% !important;
+    }
+    .button__container {
+      text-align: left;
+    }
+  }
+  
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    .button__add-comment {
+      width: 50% !important;
+    }
+    .button__container {
+      text-align: left;
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    .button__add-comment {
+      width: 35% !important;
+    }
+    .button__container {
+      text-align: left;
+    }
+  }
+  
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+    .button__add-comment {
+      width: 25% !important;
+    }
+    .button__container {
+      text-align: left;
+    }
+  }
+  
   .button__add-comment {
     width: 90%;
     font-size: 2rem;

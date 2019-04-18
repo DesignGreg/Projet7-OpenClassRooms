@@ -4,12 +4,12 @@
       <div class="add-comment__container">
         <div class="container">
           <div class="row row__first">
-            <div class="col-xl-12">
+            <div class="col-12">
               <p class="add-comment__title">Laissez votre avis...</p>
             </div>
           </div>
           <div class="row row__second">
-            <div class="col-xl-4">
+            <div class="col-4">
 
               <ul class="add-comment__list">
 
@@ -28,12 +28,12 @@
               </ul>
             </div>
 
-            <div class="col-xl-8">
+            <div class="col-8">
               <form action="" method="post" class="add-comment__form">
                 <label class="add-comment__nameLabel" for="name">Prénom</label>
                 <input class="add-comment__nameInput" type="text" name="name" id="name" v-model="nom" required>
                 <set-score-app></set-score-app>
-<!--
+                <!--
                 <label class="add-comment__scoreLabel" for="stars">Note</label>
                 <select class="add-comment__scoreSelect" name="stars" id="ratings" v-model="selected" required>
                   <option value="1">1</option>
@@ -45,13 +45,13 @@
 -->
                 <label class="add-comment__textLabel" for="comment">Commentaire</label>
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="commentaire" required></textarea>
-                
-                
-                
+
+
+
                 <div class="add__comments--button-container">
                   <button-validate-form-add-comments class="button-text">Confirmer</button-validate-form-add-comments>
                 </div>
-                
+
               </form>
             </div>
           </div>
@@ -96,6 +96,17 @@
 
 
 <style scoped>
+  @media screen and (min-width: 446px) and (max-width: 576px) {
+    .row__second--restaurantName {
+      font-size: 1.5rem !important;
+    }
+
+    .add-comment__nameInput {
+      display: block !important;
+      margin-bottom: 1rem !important;
+    }
+  }
+
   .add-comment {
     background: #EBEBEB;
     border: 2px solid #BD0000;
@@ -120,11 +131,11 @@
     font-weight: bold;
     margin-bottom: -1rem;
   }
-  
+
   .row__first {
     margin-bottom: 2rem;
   }
-  
+
   .row__second {
     margin-bottom: 0;
   }
@@ -134,7 +145,7 @@
     font-weight: bold;
     display: inline;
   }
-  
+
   .row__first--restaurantAddress {
     margin-top: 2rem;
     width: 70%;
@@ -172,42 +183,42 @@
   .add-comment__text {
     width: 100%;
   }
-  
+
   input {
     border-width: 1px;
     border-color: #26A65B;
     border-radius: 0.5rem;
   }
-  
+
   input:focus {
     outline: none;
     box-shadow: 1px 1px 1px #26A65B;
   }
-  
+
   textarea {
     border-color: #26A65B;
     border-radius: 0.5rem;
   }
-  
+
   textarea:focus {
     outline: none;
     box-shadow: 1px 1px 1px #26A65B;
   }
-  
+
   .fa-arrow-circle-down {
     font-size: 2rem;
     padding-left: 2rem;
     color: #BD0000;
   }
-  
+
   .fa-arrow-circle-down:hover {
     zoom: 105%;
   }
-  
+
   .add__comments--button-container {
     margin: 0 auto;
   }
-  
+
   .button-text {
     text-decoration: none;
     color: #EBEBEB;

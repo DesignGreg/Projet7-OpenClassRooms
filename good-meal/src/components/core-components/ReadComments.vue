@@ -1,13 +1,11 @@
 <template>
   <div class="read-comments__margin">
     <div class="read-comments">
-      <div class="read-comments__container">
+      <div class="read-comments__container scroller">
         <div class="container">
 
           <div class="row row__first">
-            <div class="col-xl-4">
-
-              <!--              <div class="read-comments__restaurantData" v-for="data in displayRestaurantInfo.slice(0,1)">-->
+            <div class="col-4">
 
               <ul class="read-comments__list">
 
@@ -17,7 +15,9 @@
                   </router-link>
                 </li>
 
-                                <li><score-app :star-number="averageRating"></score-app></li>
+                <li>
+                  <score-app :star-number="averageRating"></score-app>
+                </li>
 
                 <li>
                   <google-street-view-app :long="restaurantData.long" :lat="restaurantData.lat"></google-street-view-app>
@@ -34,7 +34,7 @@
 -->
 
             </div>
-            <div class="col-xl-8">
+            <div class="col-8">
               <div class="read-comments__data" v-for="comment in restaurantData.ratings" :key="comment.comment">
                 <p class="row__first--restaurantAuthor"> {{ comment.author }} <span class="row__first--restaurantScore"> {{ comment.stars }} </span> </p>
                 <p class="row__first--restaurantComments"> {{ comment.comment }} </p>
@@ -92,6 +92,22 @@
 </script>
 
 <style scoped>
+  @media screen and (min-width: 446px) and (max-width: 576px) {
+    .row__first--restaurantComments {
+    font-size: 1.5rem !important;
+    }
+  }
+  
+  @media screen and (min-width: 446px) and (max-width: 768px) {
+    .row__first--restaurantName {
+      font-size: 1.5rem !important;
+    }
+
+    .read-comments__data {
+      padding: 1rem !important;
+    }
+  }
+
   .read-comments {
     background: #EBEBEB;
     border: 2px solid #BD0000;
@@ -152,25 +168,30 @@
     padding-left: 2rem;
     color: #BD0000;
   }
-  
+
   .fa-arrow-circle-down:hover {
     zoom: 105%;
   }
-  
+
   /* width */
-::-webkit-scrollbar {
-  width: 0.5rem;
-}
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 3px #26A65B; 
-  border-radius: 1rem;
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 3px #26A65B;
+    border-radius: 1rem;
+  }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #BD0000; 
-  border-radius: 1rem;
-}
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #BD0000;
+    border-radius: 1rem;
+  }
+
+  .scroller {
+    scrollbar-color: #BD0000 #EBEBEB;
+    scrollbar-width: thin;
+  }
 </style>

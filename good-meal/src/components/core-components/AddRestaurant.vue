@@ -4,7 +4,7 @@
       <div class="add-restaurant__container">
         <div class="container">
           <div class="row row__first">
-            <div class="col-xl-12">
+            <div class="col-12">
               <p class="add-restaurant__title">Ajoutez un restaurant...</p>
               <router-link class="add-restaurant__link" :to='"/"'>
                     <i class="fas fa-arrow-circle-down"></i>
@@ -12,20 +12,20 @@
             </div>
           </div>
           <div class="row row__second">
-            <div class="col-xl-12">
+            <div class="col-12">
               <form action="" method="post" class="add-restaurant__form">
                 <div class="row row__third">
-                  <div class="col-xl-6">
+                  <div class="col-6">
                     <label class="add-restaurant__nameLabel" for="name">Nom</label>
                     <input class="add-restaurant__nameInput" size="30" type="text" name="name" id="name" v-model="nom" required>
                   </div>
-                  <div class="col-xl-6">
+                  <div class="col-6">
                     <label class="add-restaurant__adresseLabel" for="name">Adresse</label>
                     <textarea class="add-restaurant__adresseText" name="Adresse" id="text" cols="30" rows="3" v-model="adresse" required></textarea>
                   </div>
                 </div>
                 <div class="row row__fourth">
-                  <div class="add-restaurant__descriptionContainer col-xl-12">
+                  <div class="add-restaurant__descriptionContainer col-12">
                     <label class="add-restaurant__descriptionLabel" for="name">Description</label>
                     <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="description" required></textarea>
                   </div>

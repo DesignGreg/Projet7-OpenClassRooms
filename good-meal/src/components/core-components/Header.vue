@@ -13,29 +13,29 @@
       </div>
     </div>
     <div class="row row__second">
-      <div class="col-xl-1"></div>
-      <div class="col-xl-10">
+      <div class="col-1 col-xl-1"></div>
+      <div class="col-10 col-xl-10">
         <div class="row row__third">
-          <div class="col-xl-2">
+          <div class="col-2 col-xl-2">
             <a href="https://play.google.com/store"><img class="image image__android" src="../../assets/Android_app.png" alt="PlayStore"></a>
           </div>
-          <div class="col-xl-1"></div>
-          <div class="col-xl-2">
+          <div class="col-1 col-xl-1"></div>
+          <div class="col-2 col-xl-2">
             <a href="https://www.apple.com/fr/ios/app-store/"><img class="image image__apple" src="../../assets/Iphone_app.png" alt="AppStore"></a>
           </div>
-          <div class="col-xl-4"></div>
-          <div class="col-xl-1">
+          <div class="col-3 col-xl-4"></div>
+          <div class="col-1 col-xl-1">
             <a href="https://www.facebook.com/"><img class="image image__facebook" src="../../assets/Facebook_icon.png" alt="Facebook"></a>
           </div>
-          <div class="col-xl-1">
+          <div class="col-1 col-xl-1">
             <a href="https://twitter.com/"><img class="image image__twitter" src="../../assets/Twitter_icon.png" alt="Twitter"></a>
           </div>
-          <div class="col-xl-1">
+          <div class="col-1 col-xl-1">
             <a href="https://www.instagram.com/instagram/?hl=fr"><img class="image image__instagram" src="../../assets/Instagram_icon.png" alt="Instagram"></a>
           </div>
         </div>
       </div>
-      <div class="col-xl-1"></div>
+      <div class="col-1 col-xl-1"></div>
     </div>
   </div>
 </template>
@@ -59,6 +59,61 @@
 </script>
 
 <style scoped>
+  @media screen and (min-width: 446px) and (max-width: 576px) {
+    .header__logo {
+      width: 20% !important;
+    }
+
+    .header__title-firstWordFirstLetter {
+      font-size: 6rem !important;
+    }
+
+    .header__title-firstWordOtherLetters {
+      font-size: 6rem !important;
+    }
+
+    .header__title-secondWordFirstLetter {
+      font-size: 6rem !important;
+    }
+
+    .header__title-secondWordOtherLetters {
+      font-size: 6rem !important;
+    }
+  }
+  
+  @media screen and (min-width: 576px) and (max-width: 768px) {
+    .header__logo {
+      width: 20% !important;
+    }
+
+    .header__title-firstWordFirstLetter {
+      font-size: 8rem !important;
+    }
+
+    .header__title-firstWordOtherLetters {
+      font-size: 8rem !important;
+    }
+
+    .header__title-secondWordFirstLetter {
+      font-size: 8rem !important;
+    }
+
+    .header__title-secondWordOtherLetters {
+      font-size: 8rem !important;
+    }
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1200px) {
+
+    .header__logo {
+      width: 15% !important;
+    }
+
+    .container {
+      text-align: center;
+    }
+  }
+
   .row__first {
     margin-bottom: 0;
   }
@@ -120,11 +175,11 @@
   .image__instagram {
     width: 30px;
   }
-  
+
   .image:hover {
     zoom: 105%;
   }
-  
+
   .header__link {
     text-decoration: none;
     color: #2A2A2A;

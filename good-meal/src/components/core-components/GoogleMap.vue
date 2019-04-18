@@ -66,18 +66,15 @@
             // Browser doesn't support Geolocation
             handleLocationError(false, this.infoWindow, this.map.getCenter());
           }
-        }),
-        pushMarkersCoordinates => {
-        
-      }  
+        })
     },
     methods: {
       addMarker (coord, type) {
         let icon = ''
         if (type === 'user') {
-          icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png'
+          icon = 'https://img.icons8.com/color/48/000000/marker.png'
         } else {
-          icon = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/library_maps.png'
+          icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png'
         }
         console.log('j ajoute ', coord)
         const position = new google.maps.LatLng(coord.lat, coord.lng);
@@ -97,6 +94,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  @media screen and (min-width: 446px) and (max-width: 1200px) {
+    .main {
+      margin-bottom: 1rem;
+    }
+  }
+  
   .google-map {
     width: 100%;
     height: 600px;

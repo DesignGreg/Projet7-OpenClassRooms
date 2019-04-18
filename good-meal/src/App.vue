@@ -2,12 +2,11 @@
   <div id="app">
     <div class="container">
       <div class="row row__first">
-        <header-app class="col-xl-7"></header-app>
-        <div class="col-xl-1"></div>
-        <div class="col-xl-4"></div>
+        <header-app class="col-lg-12 col-xl-7"></header-app>
+        <div class="col-xl-5"></div>
       </div>
 
-      <div class="row row__second">
+      <div class="row row__second ">
         <google-map class="col-xl-7" name="restaurantMap"></google-map>
         <div class="col-xl-1"></div>
         <list-app class="col-xl-4"></list-app>
@@ -34,7 +33,7 @@
 
   export default {
     name: 'app',
-    
+
     components: {
       GoogleMap,
       "header-app": Header,
@@ -55,59 +54,47 @@
   }
 
   html {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)),url(assets/Background.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url(assets/Background.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+    overflow: auto;
   }
 
   .row {
     margin-bottom: 3rem;
   }
-  
+
+  .row__third {
+    margin-bottom: 0;
+  }
+
   .module {
     margin-top: -20rem;
   }
-  
+
   .module-enter {
     opacity: 0;
     margin-top: 20rem;
   }
-  
+
   .module-enter-active {
     transition-property: all;
     transition-duration: 1s;
   }
-  
+
   .module-leave-active {
     transition-property: all;
     transition-duration: .2s;
   }
-  
+
   .module-enter-to {
     margin-top: -20rem;
   }
-  
+
   .module-leave-to {
     margin-top: 20rem;
     opacity: 0
   }
-
-/*
-  .module-enter-active,
-  .module-leave-active {
-    transition-property: opacity;
-    transition-duration: .25s;
-  }
-
-  .module-enter-active {
-    transition-delay: .25s;
-  }
-
-  .module-enter,
-  .module-leave-active {
-    opacity: 0
-  }
-*/
 </style>

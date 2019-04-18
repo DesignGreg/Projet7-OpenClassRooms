@@ -29,6 +29,12 @@
 
 
 <style scoped>
+  @media screen and (min-width: 446px) and (max-width: 576px) {
+    .star-rating {
+      margin-left: 0 !important;
+    }
+  }
+
   .star-rating {
     font-family: 'FontAwesome';
     display: inline;
