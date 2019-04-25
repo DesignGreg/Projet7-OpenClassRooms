@@ -131,22 +131,26 @@
     font-size: 10rem;
     color: #26A65B;
     font-weight: bold;
+    text-shadow: 1px 2px white;
   }
 
   .header__title-firstWordOtherLetters {
     font-size: 10rem;
     font-weight: lighter;
+    text-shadow: 1px 2px white;
   }
 
   .header__title-secondWordFirstLetter {
     font-size: 10rem;
     color: #BD0000;
     font-weight: bold;
+    text-shadow: 1px 2px white;
   }
 
   .header__title-secondWordOtherLetters {
     font-size: 10rem;
     font-weight: lighter;
+    text-shadow: 1px 2px white;
   }
 
   .header__logo {

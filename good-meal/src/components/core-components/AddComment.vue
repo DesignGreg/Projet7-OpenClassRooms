@@ -32,17 +32,7 @@
               <form action="" method="post" class="add-comment__form">
                 <label class="add-comment__nameLabel" for="name">Prénom</label>
                 <input class="add-comment__nameInput" type="text" name="name" id="name" v-model="nom" required>
-                <set-score-app></set-score-app>
-                <!--
-                <label class="add-comment__scoreLabel" for="stars">Note</label>
-                <select class="add-comment__scoreSelect" name="stars" id="ratings" v-model="selected" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
--->
+                <set-score-app v-model="rating"/></set-score-app>
                 <label class="add-comment__textLabel" for="comment">Commentaire</label>
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="commentaire" required></textarea>
 
@@ -75,7 +65,8 @@
         nom: 'Votre prénom',
         selected: '3',
         commentaire: 'Votre commentaire',
-        restaurantData: []
+        restaurantData: [],
+        rating: 0
       }
     },
     components: {

@@ -62,12 +62,8 @@
     overflow: auto;
   }
 
-  .row {
+  .row{
     margin-bottom: 3rem;
-  }
-
-  .row__third {
-    margin-bottom: 0;
   }
 
   .module {

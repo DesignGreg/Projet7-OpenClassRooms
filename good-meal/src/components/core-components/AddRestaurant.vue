@@ -30,7 +30,7 @@
                     <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="description" required></textarea>
                   </div>
                   <div class="add__restaurant--button-container">
-                  <button-validate-form-add-restaurant class="button-text">Confirmer</button-validate-form-add-restaurant>
+                  <button-validate-form-add-restaurant class="button-text" @click="postData">Confirmer</button-validate-form-add-restaurant>
                   </div>
                 </div>
               </form>
@@ -45,18 +45,25 @@
 
 <script>
   import ButtonValidateFormAddRestaurant from '../side-components/ButtonValidateFormAddRestaurant.vue';
+  const axios = require('axios');
   
   export default {
     name: 'add-restaurant-app',
     data: function() {
       return {
-        nom: 'Nom Restaurant',
-        description: 'Description du restaurant',
-        adresse: 'Adresse du restaurant',
+        nom: '',
+        description: '',
+        adresse: '',
       }
     },
     components: {
       ButtonValidateFormAddRestaurant
+    },
+    methods: {
+      postData() {
+        //faire un post Axios avec les Data
+        
+      }
     }
   }
 </script>

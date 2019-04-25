@@ -48,7 +48,9 @@ export const store = new Vuex.Store({
           return false;
         });
       }, 500)
-    }
+    },
+//    postData:
+    //
   }
 });
 

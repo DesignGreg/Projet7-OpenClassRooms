@@ -1,11 +1,11 @@
 <template>
   <div class="star-rating">
     <fieldset>
-      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
-      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
-      <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
-      <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
-      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
+      <input type="radio" id="star5" name="rating" value="5" @input="chooseScore(5)"/><label for="star5" title="Outstanding">5 stars</label>
+      <input type="radio" id="star4" name="rating" value="4" @input="chooseScore(4)"/><label for="star4" title="Very Good">4 stars</label>
+      <input type="radio" id="star3" name="rating" value="3" @input="chooseScore(3)"/><label for="star3" title="Good">3 stars</label>
+      <input type="radio" id="star2" name="rating" value="2" @input="chooseScore(2)"/><label for="star2" title="Poor">2 stars</label>
+      <input type="radio" id="star1" name="rating" value="1" @input="chooseScore(1)"/><label for="star1" title="Very Poor">1 star</label>
     </fieldset>
   </div>
 </template>
@@ -18,6 +18,11 @@
     data: function() {
       return {
 
+      }
+    },
+    methods: {
+      chooseScore (value) {
+        this.$emit('input', value)
       }
     },
     computed: {

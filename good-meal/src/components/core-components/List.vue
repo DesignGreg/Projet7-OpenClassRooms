@@ -79,8 +79,9 @@
 
   .aside__button {
     display: inline-block;
+    width: 20%;
     margin-left: 3rem;
-    vertical-align: super;
+    vertical-align: baseline;
   }
 
   .aside__score {

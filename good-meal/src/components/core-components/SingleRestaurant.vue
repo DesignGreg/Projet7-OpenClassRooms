@@ -12,7 +12,7 @@
             <div class="col-6">
               <li class="aside__button-read-comment">
                 <button-read-comments :onClick="button">
-                  <router-link class="button-text" :to='"/read-comments/" + index'>Les avis</router-link>
+                  <router-link class="button-text" :to='"/read-comments/" + index' >Les avis</router-link>
                 </button-read-comments>
               </li>
             </div>
@@ -56,9 +56,13 @@
         return this.$store.getters.getRestaurantInfo;
       }
     },
-    watch: {
-
-    }
+//    watch: {
+//      '$route' (to, from) {
+//        if (from.params.id != to.params.id) {
+//          return to='"/read-comments/" + index';
+//        }
+//      }
+//    }
   }
 </script>
 

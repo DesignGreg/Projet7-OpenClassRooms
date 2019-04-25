@@ -74,18 +74,30 @@
       }
     },
     mounted() {
-      axios.get('http://localhost:8080/restaurantList.json').then((response) => {
-        this.restaurantData = response.data[this.$route.params.restaurantID];
-      }, (err) => {
-        console.log(err);
-        return false;
-      });
+      this.getRestaurantData(this.$route.params.restaurantID);
+    },
+    methods: {
+      getRestaurantData (restaurantID) {
+        axios.get('http://localhost:8080/restaurantList.json').then((response) => {
+          this.restaurantData = response.data[restaurantID];
+        }, (err) => {
+          console.log(err);
+          return false;
+        });
+      }
     },
     computed: {
       averageRating() {
         return Math.round(this.restaurantData.ratings.reduce((cumulatedAverage, rating) => {
           return cumulatedAverage + (rating.stars / this.restaurantData.ratings.length)
         }, 0))
+      }
+    },
+    watch: {
+      '$route' (to, from) {
+        if (to.params.restaurantID !== from.params.restaurantID) {
+          this.getRestaurantData(this.$route.params.restaurantID);
+        }
       }
     }
   }
