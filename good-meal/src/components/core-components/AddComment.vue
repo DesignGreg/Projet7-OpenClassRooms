@@ -32,7 +32,7 @@
               <form action="" method="post" class="add-comment__form">
                 <label class="add-comment__nameLabel" for="name">Prénom</label>
                 <input class="add-comment__nameInput" type="text" name="name" id="name" v-model="nom" required>
-                <set-score-app v-model="rating"/></set-score-app>
+                <set-score-app v-model="rating" :key="reloadComponent"></set-score-app>
                 <label class="add-comment__textLabel" for="comment">Commentaire</label>
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="commentaire" required></textarea>
 
@@ -62,11 +62,11 @@
     name: 'add-comment-app',
     data: function() {
       return {
-        nom: 'Votre prénom',
-        selected: '3',
-        commentaire: 'Votre commentaire',
-        restaurantData: [],
-        rating: 0
+        nom: '',
+        commentaire: '',
+        rating: 0,
+        reloadComponent: 0,
+        restaurantData: []
       }
     },
     components: {
@@ -82,6 +82,27 @@
         return false;
       });
     },
+    methods: {
+      getRestaurantData (restaurantID) {
+        axios.get('http://localhost:8080/restaurantList.json').then((response) => {
+          this.restaurantData = response.data[restaurantID];
+        }, (err) => {
+          console.log(err);
+          return false;
+        });
+      }
+    },
+    watch: {
+      '$route' (to, from) {
+        if (to.params.restaurantID !== from.params.restaurantID) {
+          this.getRestaurantData(this.$route.params.restaurantID);
+          this.nom = '';
+          this.commentaire = '';
+          this.rating = 0;
+          this.reloadComponent += 1;
+        }
+      }
+    }
   }
 </script>
 
@@ -158,11 +179,6 @@
     display: inline-block;
     font-size: 2rem;
     margin-left: 4rem;
-  }
-
-  .add-comment__scoreSelect {
-    display: inline-block;
-    margin-left: 0.5rem;
   }
 
   .add-comment__textLabel {

@@ -26,14 +26,8 @@
                   <p class="row__first--restaurantAddress"> {{ restaurantData.address }} </p>
                 </li>
               </ul>
-              <!--              </div>-->
-              <!--
-              <button-add-comment :onClick="button">
-                <router-link :to='"/add-comment/" + index'>Ajouter commentaire</router-link>
-              </button-add-comment>
--->
-
             </div>
+            
             <div class="col-8">
               <div class="read-comments__data" v-for="comment in restaurantData.ratings" :key="comment.comment">
                 <p class="row__first--restaurantAuthor"> {{ comment.author }} <span class="row__first--restaurantScore"> {{ comment.stars }} </span> </p>

@@ -94,6 +94,7 @@
     top: 2px;
   }
 
+/*
   body {
     background: #262829;
     color: #95a5a6;
@@ -110,4 +111,5 @@
   body a {
     color: #BD0000;
   }
+*/
 </style>

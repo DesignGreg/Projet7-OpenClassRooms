@@ -30,7 +30,7 @@
 
     mounted: function() {
       GoogleMapsLoader.load((google) => {
-        google.addEventListener()
+//        google.addEventListener()
         this.$store.watch(
           (state, getters) => getters.getRestaurantInfo,
           (newValue, oldValue) => {
@@ -44,7 +44,7 @@
           }
         )
 
-        machinChose.addListener('click', addRestaurant)
+//        machinChose.addListener('click', addRestaurant)
 
         function clickHandler (event) {
           if (typeof event === 'addRestaurant') {
