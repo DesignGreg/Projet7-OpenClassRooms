@@ -75,12 +75,7 @@
       "set-score-app": SetScoreStars
     },
     mounted() {
-      axios.get('http://localhost:8080/restaurantList.json').then((response) => {
-        this.restaurantData = response.data[this.$route.params.restaurantID];
-      }, (err) => {
-        console.log(err);
-        return false;
-      });
+      this.getRestaurantData(this.$route.params.restaurantID);
     },
     methods: {
       getRestaurantData (restaurantID) {

@@ -30,7 +30,7 @@
 
     mounted: function() {
       GoogleMapsLoader.load((google) => {
-//        google.addEventListener()
+        //        google.addEventListener()
         this.$store.watch(
           (state, getters) => getters.getRestaurantInfo,
           (newValue, oldValue) => {
@@ -44,22 +44,34 @@
           }
         )
 
-//        machinChose.addListener('click', addRestaurant)
+        //        machinChose.addListener('click', addRestaurant)
 
-        function clickHandler (event) {
-          if (typeof event === 'addRestaurant') {
-            addRestaurant(event)
-          }
-        }
+        //        function clickHandler (event) {
+        //          if (typeof event === 'addRestaurant') {
+        //            addRestaurant(event)
+        //          }
+        //        }
 
         this.bounds = new google.maps.LatLngBounds();
+
+
+        this.initMap();
+        this.askGeolocation();
+
+
+      });
+    },
+    methods: {
+      initMap() {
         const element = this.$refs.mainMap
-        this.infoWindow = new google.maps.InfoWindow;
         const options = {
+          center: {lat: 48.842129, lng: 2.329375},
           zoom: 18,
         }
         this.map = new google.maps.Map(element, options);
-
+        this.infoWindow = new google.maps.InfoWindow;
+      },
+      askGeolocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
             const pos = {
@@ -76,9 +88,12 @@
           // Browser doesn't support Geolocation
           handleLocationError(false, this.infoWindow, this.map.getCenter());
         }
-      });
-    },
-    methods: {
+      },
+
+      useBounds() {
+
+      },
+
       addMarker(coord, type) {
         let icon = ''
         if (type === 'user') {
@@ -104,20 +119,20 @@
       }
     },
     computed: {
-//      CommentsClick() {
-//        map.addListener('center_changed', function() {
-//          // 3 seconds after the center of the map has changed, pan back to the
-//          // marker.
-//          window.setTimeout(function() {
-//            map.panTo(marker.getPosition());
-//          }, 3000);
-//        });
-//
-//        marker.addListener('click', function() {
-//          map.setZoom(8);
-//          map.setCenter(marker.getPosition());
-//        });
-//      },
+      //      CommentsClick() {
+      //        map.addListener('center_changed', function() {
+      //          // 3 seconds after the center of the map has changed, pan back to the
+      //          // marker.
+      //          window.setTimeout(function() {
+      //            map.panTo(marker.getPosition());
+      //          }, 3000);
+      //        });
+      //
+      //        marker.addListener('click', function() {
+      //          map.setZoom(8);
+      //          map.setCenter(marker.getPosition());
+      //        });
+      //      },
 
       //      restaurantClick() {
       //        this.map.addListener('click', function(e) {
