@@ -1,13 +1,17 @@
 <template>
-  <div class="main" ref="autreRef">
+  <div class="main">
     <div class="google-map" v-bind:id="mapName" ref="mainMap" @click="openComponent">
     </div>
+    <template v-if="Boolean(this.google) && Boolean(this.map)">
+      <slot :google="google" :map="map"></slot>
+    </template>
   </div>
 </template>
 
 <script>
   //  import mapInterface from '../../interfaces/mapInterface.js'
   const GoogleMapsLoader = require('google-maps');
+  const GoogleMapsAPILoader = require('google-maps-api-loader');
   GoogleMapsLoader.KEY = '';
 
   export default {
@@ -15,6 +19,10 @@
     props: ['name'],
     data: function() {
       return {
+        google: null,
+
+
+
         mapName: this.name + "-map",
         userCoord: {},
         markers: [],
@@ -28,48 +36,50 @@
       }
     },
 
-    mounted: function() {
-      GoogleMapsLoader.load((google) => {
-        //        google.addEventListener()
-        this.$store.watch(
-          (state, getters) => getters.getRestaurantInfo,
-          (newValue, oldValue) => {
-            // this.markers.forEach(this.removeMarker)
-            newValue.map((restaurant) => {
-              this.addMarker({
-                lat: restaurant.lat,
-                lng: restaurant.long
-              }, 'restaurant')
-            })
-          }
-        )
+    async mounted () {
+      const google = await GoogleMapsAPILoader({
+        apiKey: ''
+      })
+      this.google = google
+      this.initMap();
 
-        //        machinChose.addListener('click', addRestaurant)
-
-        //        function clickHandler (event) {
-        //          if (typeof event === 'addRestaurant') {
-        //            addRestaurant(event)
-        //          }
-        //        }
-
-        this.bounds = new google.maps.LatLngBounds();
-
-
-        this.initMap();
-        this.askGeolocation();
-
-
-      });
+      // GoogleMapsLoader.load((google) => {
+      //   this.$store.watch(
+      //     (state, getters) => getters.getRestaurantInfo,
+      //     (newValue, oldValue) => {
+      //       console.log('newValue', oldValue)
+      //       // this.markers.forEach(this.removeMarker)
+      //       newValue.map((restaurant) => {
+      //         this.addMarker({
+      //           lat: restaurant.lat,
+      //           lng: restaurant.long
+      //         }, 'restaurant')
+      //       })
+      //     }
+      //   )
+      //   this.$store.getters.getRestaurantList().forEach((restaurant) => {
+      //         this.addMarker({
+      //           lat: restaurant.lat,
+      //           lng: restaurant.long
+      //         }, 'restaurant')
+      //       })
+      //   this.initMap();
+      //   this.addChangeBoundsListener();
+      //   this.askGeolocation();
+      // });
     },
     methods: {
       initMap() {
         const element = this.$refs.mainMap
         const options = {
-          center: {lat: 48.842129, lng: 2.329375},
-          zoom: 18,
+          center: {
+            lat: 48.842129,
+            lng: 2.329375
+          },
+          zoom: 12,
         }
-        this.map = new google.maps.Map(element, options);
-        this.infoWindow = new google.maps.InfoWindow;
+        this.map = new this.google.maps.Map(element, options);
+        this.infoWindow = new this.google.maps.InfoWindow;
       },
       askGeolocation() {
         if (navigator.geolocation) {
@@ -89,13 +99,19 @@
           handleLocationError(false, this.infoWindow, this.map.getCenter());
         }
       },
-
-      useBounds() {
-
+      addChangeBoundsListener () {
+        google.maps.event.addListener(this.map, 'bounds_changed', () => {
+          console.log('changed')
+        })
       },
+      //      useBounds() {
+      //        this.bounds = new google.maps.LatLngBounds();
+      //        this.bounds.extend(marker.position);
+      //        this.map.fitBounds(this.bounds);
+      //      },
 
       addMarker(coord, type) {
-        let icon = ''
+        let icon = '';
         if (type === 'user') {
           icon = 'https://img.icons8.com/color/48/000000/marker.png'
         } else {
@@ -108,17 +124,43 @@
           map: this.map,
           icon
         });
-        this.markers.push(marker)
+        //        this.useBounds();
+        //        this.bounds = new google.maps.LatLngBounds();
+        //        this.bounds.extend(marker.position);
+        //        this.map.fitBounds(this.bounds);
+        this.markers.push(marker);
       },
       removeMarker(marker) {
         marker.setMap(null)
       },
-      openComponent() {
-        console.log('Ca fonctionne');
+      openComponent(coord) {
+        let icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png';
+        const position = new google.maps.LatLng(coord.lat, coord.lng);
+        const marker = new google.maps.Marker({
+          position,
+          map: this.map,
+          icon
+        });
+        this.markers.push(marker);
+        console.log('Done');
         this.$router.push('/add-restaurant/');
-      }
+      },
     },
     computed: {
+//      eventListener() {
+//        this.map.addListener('click', function(e) {
+//          this.placeMarker(e.latLng, this.map);
+//        });
+//      },
+//      
+//      placeMarker(latLng, map) {
+//          const marker = new google.maps.Marker({
+//            position: latLng,
+//            map: this.map
+//          });
+//          this.map.panTo(latLng);
+//      }
+      
       //      CommentsClick() {
       //        map.addListener('center_changed', function() {
       //          // 3 seconds after the center of the map has changed, pan back to the
@@ -151,7 +193,6 @@
   };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   @media screen and (min-width: 446px) and (max-width: 1200px) {
     .main {

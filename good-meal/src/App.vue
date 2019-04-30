@@ -7,7 +7,7 @@
       </div>
 
       <div class="row row__second ">
-        <google-map class="col-xl-7" name="restaurantMap"></google-map>
+        <main-map class="col-xl-7" name="restaurantMap"></main-map>
         <div class="col-xl-1"></div>
         <list-app class="col-xl-4"></list-app>
       </div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-  import GoogleMap from './components/core-components/GoogleMap.vue';
+  import MainMap from './components/core-components/MainMap.vue';
   import Header from './components/core-components/Header.vue';
   import List from './components/core-components/List.vue';
   import Footer from './components/core-components/Footer.vue';
@@ -35,7 +35,7 @@
     name: 'app',
 
     components: {
-      GoogleMap,
+      MainMap,
       "header-app": Header,
       "list-app": List,
       "footer-app": Footer

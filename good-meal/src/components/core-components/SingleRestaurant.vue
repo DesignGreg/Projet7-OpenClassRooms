@@ -55,14 +55,7 @@
       displayRestaurantInfo() {
         return this.$store.getters.getRestaurantInfo;
       }
-    },
-//    watch: {
-//      '$route' (to, from) {
-//        if (from.params.id != to.params.id) {
-//          return to='"/read-comments/" + index';
-//        }
-//      }
-//    }
+    }
   }
 </script>
 

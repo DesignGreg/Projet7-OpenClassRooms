@@ -1,53 +1,51 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-const axios = require('axios');
+
+import restaurantFactory from '../interfaces/restaurantFactory'
+console.log(restaurantFactory)
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    data: [],
+    restaurantList: [],
   },
   getters: {
+    getRestaurantById: (state) => {
+      return (id) => {
+        return state.restaurantList[id]
+      }
+    },
     getRestaurantInfo: state => {
-      const restaurantList = state.data;
+      const restaurantList = state.restaurantList;
 
-      return restaurantList.map((restaurant) => {
-        const sum = restaurant.ratings.reduce((acc, rating) => {
-          return acc + rating.stars;
-        }, 0);
-        return {
-          ...restaurant,
-          averageRating: Math.round(sum / restaurant.ratings.length),
-        }
-      })
+      return restaurantList
     }, 
     getComments: state => {
       console.log(state);
       return (restaurantID) => {
-        const restaurant = state.data[restaurantID];
+        const restaurant = state.restaurantList[restaurantID];
         return restaurant.ratings;
       }
-      
     }
   },
   mutations: {
-    setData: (state, {info}) => {
-      state.data = info;
+    setRestaurantList: (state, {list}) => {
+      state.restaurantList = list.map(formatRestaurant);
     }
   },
   actions: {
     getData: async function (context) {
-      setTimeout(() => {
-        axios.get('http://localhost:8080/restaurantList.json').then((response) => {
-          context.commit('setData', {
-            info: response.data});
-          return true;
-        }, (err) => {
-          console.log(err);
-          return false;
-        });
-      }, 500)
+      restaurantFactory.getRestaurantList()
+      .then((restaurantList) => {
+        context.commit('setRestaurantList', {
+          list: restaurantList}
+        );
+        return true;
+      }, (err) => {
+        console.log(err);
+        return false;
+      });
     },
 //    postData:
     //
@@ -73,3 +71,13 @@ export const store = new Vuex.Store({
 //
 //    });
 //},
+
+function formatRestaurant (restaurant) {
+  const sum = restaurant.ratings.reduce((acc, rating) => {
+    return acc + rating.stars;
+  }, 0);
+  return {
+    ...restaurant,
+    averageRating: Math.round(sum / restaurant.ratings.length),
+  }
+}

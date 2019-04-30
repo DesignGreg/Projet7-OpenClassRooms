@@ -16,7 +16,7 @@
                 </li>
 
                 <li>
-                  <score-app :star-number="averageRating"></score-app>
+                  <score-app :star-number="restaurantData.averageRating"></score-app>
                 </li>
 
                 <li>
@@ -48,20 +48,19 @@
 
 <script>
   const axios = require('axios');
-  import dataInterface from '../../interfaces/dataInterface.js'
   import ButtonAddComment from '../side-components/ButtonAddComment.vue';
   import GoogleStreetView from './GoogleStreetView.vue';
   import ScoreStars from '../side-components/ScoreStars.vue';
 
   export default {
     name: 'read-comments-app',
-    data: function() {
-      return {
-        restaurantData: {
-          ratings: []
-        },
-      }
-    },
+    // data: function() {
+    //   return {
+    //     restaurantData: {
+    //       ratings: []
+    //     },
+    //   }
+    // },
     components: {
       ButtonAddComment,
       "google-street-view-app": GoogleStreetView,
@@ -72,33 +71,9 @@
         console.log('Working');
       }
     },
-    mounted() {
-      this.getRestaurantData(this.$route.params.restaurantID);
-    },
-    methods: {
-      getRestaurantData (restaurantID) {
-//        const data = dataInterface.getRestaurantData(restaurantID);
-//        return data;
-        axios.get('http://localhost:8080/restaurantList.json').then((response) => {
-          this.restaurantData = response.data[restaurantID];
-        }, (err) => {
-          console.log(err);
-          return false;
-        });
-      }
-    },
     computed: {
-      averageRating() {
-        return Math.round(this.restaurantData.ratings.reduce((cumulatedAverage, rating) => {
-          return cumulatedAverage + (rating.stars / this.restaurantData.ratings.length)
-        }, 0))
-      }
-    },
-    watch: {
-      '$route' (to, from) {
-        if (to.params.restaurantID !== from.params.restaurantID) {
-          this.getRestaurantData(this.$route.params.restaurantID);
-        }
+      restaurantData () {
+        return this.$store.getters.getRestaurantById(this.$route.params.restaurantID)
       }
     }
   }

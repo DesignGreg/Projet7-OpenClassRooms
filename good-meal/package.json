@@ -11,6 +11,7 @@
     "axios": "^0.18.0",
     "css-loader": "^2.1.1",
     "google-maps": "^3.3.0",
+    "google-maps-api-loader": "^1.1.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.2",
     "vue-slider-component": "^3.0.30",
