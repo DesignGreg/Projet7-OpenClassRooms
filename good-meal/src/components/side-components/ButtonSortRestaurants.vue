@@ -2,7 +2,7 @@
 
   <div id="slider">
     
-    <vue-slider v-model="value_2" :data="data" :enable-cross="false"></vue-slider>
+    <vue-slider v-model="values" :data="data" :enable-cross="false"></vue-slider>
 
   </div>
 
@@ -22,9 +22,14 @@
     },
     data: function() {
       return {
-        value_2: [0,5],
+        values: [0,5],
         data: [0, 1, 2, 3, 4, 5]
       }
+    },
+    computed: {
+//      sortValue: {
+//        this.$store.commit('saveSortScore', this.values)
+//      }
     }
   }
 </script>

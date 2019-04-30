@@ -47,20 +47,12 @@
 </template>
 
 <script>
-  const axios = require('axios');
   import ButtonAddComment from '../side-components/ButtonAddComment.vue';
   import GoogleStreetView from './GoogleStreetView.vue';
   import ScoreStars from '../side-components/ScoreStars.vue';
 
   export default {
     name: 'read-comments-app',
-    // data: function() {
-    //   return {
-    //     restaurantData: {
-    //       ratings: []
-    //     },
-    //   }
-    // },
     components: {
       ButtonAddComment,
       "google-street-view-app": GoogleStreetView,

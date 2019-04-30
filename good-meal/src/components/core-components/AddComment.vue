@@ -66,7 +66,7 @@
         commentaire: '',
         rating: 0,
         reloadComponent: 0,
-        restaurantData: []
+        //        restaurantData: []
       }
     },
     components: {
@@ -78,24 +78,17 @@
       this.getRestaurantData(this.$route.params.restaurantID);
     },
     methods: {
-      getRestaurantData (restaurantID) {
-        axios.get('http://localhost:8080/restaurantList.json').then((response) => {
-          this.restaurantData = response.data[restaurantID];
-        }, (err) => {
-          console.log(err);
-          return false;
-        });
+      restore() {
+        this.nom = '';
+        this.commentaire = '';
+        this.rating = 0;
+        this.reloadComponent += 1;
       }
     },
-    watch: {
-      '$route' (to, from) {
-        if (to.params.restaurantID !== from.params.restaurantID) {
-          this.getRestaurantData(this.$route.params.restaurantID);
-          this.nom = '';
-          this.commentaire = '';
-          this.rating = 0;
-          this.reloadComponent += 1;
-        }
+    computed: {
+      restaurantData() {
+        this.restore();
+        return this.$store.getters.getRestaurantById(this.$route.params.restaurantID)
       }
     }
   }

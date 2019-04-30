@@ -10,9 +10,9 @@
 
 <script>
   //  import mapInterface from '../../interfaces/mapInterface.js'
-  const GoogleMapsLoader = require('google-maps');
+//  const GoogleMapsLoader = require('google-maps');
   const GoogleMapsAPILoader = require('google-maps-api-loader');
-  GoogleMapsLoader.KEY = '';
+//  GoogleMapsLoader.KEY = '';
 
   export default {
     name: 'google-map',
@@ -20,9 +20,6 @@
     data: function() {
       return {
         google: null,
-
-
-
         mapName: this.name + "-map",
         userCoord: {},
         markers: [],
@@ -42,6 +39,7 @@
       })
       this.google = google
       this.initMap();
+      this.askGeolocation();
 
       // GoogleMapsLoader.load((google) => {
       //   this.$store.watch(

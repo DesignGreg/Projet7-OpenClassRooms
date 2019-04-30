@@ -1,26 +1,27 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import restaurantFactory from '../interfaces/restaurantFactory'
-console.log(restaurantFactory)
+import restaurantFactory from '../interfaces/restaurantFactory';
+console.log(restaurantFactory);
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
     restaurantList: [],
+    sortValue: []
   },
   getters: {
     getRestaurantById: (state) => {
       return (id) => {
-        return state.restaurantList[id]
+        return state.restaurantList[id];
       }
     },
     getRestaurantInfo: state => {
       const restaurantList = state.restaurantList;
 
-      return restaurantList
-    }, 
+      return restaurantList;
+    },
     getComments: state => {
       console.log(state);
       return (restaurantID) => {
@@ -30,49 +31,32 @@ export const store = new Vuex.Store({
     }
   },
   mutations: {
-    setRestaurantList: (state, {list}) => {
+    setRestaurantList: (state, {
+      list
+    }) => {
       state.restaurantList = list.map(formatRestaurant);
+    },
+    saveSortScore: (state) => {
+      state.sortValue = sortValue;
     }
   },
   actions: {
     getData: async function (context) {
       restaurantFactory.getRestaurantList()
-      .then((restaurantList) => {
-        context.commit('setRestaurantList', {
-          list: restaurantList}
-        );
-        return true;
-      }, (err) => {
-        console.log(err);
-        return false;
-      });
+        .then((restaurantList) => {
+          context.commit('setRestaurantList', {
+            list: restaurantList
+          });
+          return true;
+        }, (err) => {
+          console.log(err);
+          return false;
+        });
     },
-//    postData:
-    //
   }
 });
 
-//callJSON: state => {
-//  axios
-//    .get('http://localhost:8080/restaurantList.json')
-//    .then(response => (state.info = response.data))
-//    .catch(function (error) {
-//      if (error.response) {
-//        console.log(error.response.data);
-//        console.log(error.response.status);
-//        console.log(error.response.headers);
-//      } else if (error.request) {
-//        console.log(error.request);
-//      } else {
-//        console.log('Error', error.message);
-//      }
-//    })
-//    .then(function () {
-//
-//    });
-//},
-
-function formatRestaurant (restaurant) {
+function formatRestaurant(restaurant) {
   const sum = restaurant.ratings.reduce((acc, rating) => {
     return acc + rating.stars;
   }, 0);

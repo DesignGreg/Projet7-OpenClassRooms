@@ -5,7 +5,7 @@ export default {
 };
 
 const GoogleMapsLoader = require('google-maps');
-GoogleMapsLoader.KEY = 'AIzaSyC4jQPlHAM7aOSSnixZXj7JjzI8hfqJDKs';
+GoogleMapsLoader.KEY = '';
 
 
 function createMap (mapElem, center, zoom) {
