@@ -1,7 +1,8 @@
 <template>
   <div class="aside">
     <h2 class="aside__title"> {{ title }} </h2>
-    <button-sort-restaurants class="aside__button">Trier</button-sort-restaurants>
+<!--    <button-sort-restaurants class="aside__button">Trier</button-sort-restaurants>-->
+    <button-sort-restaurants v-model="score" class="aside__button">Trier</button-sort-restaurants>
     <div class="aside__main-container scroller">
       <div class="aside__second-container">
         <single-restaurant-app></single-restaurant-app>
@@ -22,6 +23,7 @@
     data: function() {
       return {
         title: "Restaurants",
+        score: []
 
       }
     },
@@ -29,11 +31,11 @@
       "single-restaurant-app": SingleRestaurant,
       ButtonSortRestaurants
     },
-    computed: {
-      displayRestaurantInfo() {
-        return this.$store.getters.getRestaurantInfo;
-      }
-    }
+//    computed: {
+//      displayRestaurantInfo() {
+//        return this.$store.getters.getRestaurantInfo;
+//      }
+//    }
   }
 </script>
 

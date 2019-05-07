@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-   <button-add-restaurant  :onClick="button"><router-link class="button-text" :to='"/add-restaurant/"'>Ajouter restaurant</router-link></button-add-restaurant>
+<!--   <button-add-restaurant  :onClick="button"><router-link class="button-text" :to='"/add-restaurant/"'>Ajouter restaurant</router-link></button-add-restaurant>-->
     <div class="footer__info">
       <p class="footer__info--companyName"> {{ companyName }} </p>
       <p class="footer__info--companyAddress"> {{ companyAddress }} </p>
@@ -14,7 +14,7 @@
 
 
 <script>
-  import ButtonAddRestaurant from '../side-components/ButtonAddRestaurant.vue';
+//  import ButtonAddRestaurant from '../side-components/ButtonAddRestaurant.vue';
   import ButtonLegalNotices from '../side-components/ButtonLegalNotices.vue';
   
   export default {
@@ -32,7 +32,7 @@
       }
     },
     components: {
-      ButtonAddRestaurant,
+//      ButtonAddRestaurant,
       ButtonLegalNotices
     }
   }
@@ -41,7 +41,6 @@
 
 <style scoped>
   .footer__info {
-    margin-top: 1rem;
     text-align: right;
   }
   

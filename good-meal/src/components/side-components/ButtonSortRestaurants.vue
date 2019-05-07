@@ -2,7 +2,7 @@
 
   <div id="slider">
     
-    <vue-slider v-model="values" :data="data" :enable-cross="false"></vue-slider>
+    <vue-slider name="score" :value="range" :data="data" :enable-cross="false" @input="sortRestaurants"></vue-slider>
 
   </div>
 
@@ -22,14 +22,14 @@
     },
     data: function() {
       return {
-        values: [0,5],
+        range: [0,5],
         data: [0, 1, 2, 3, 4, 5]
       }
     },
-    computed: {
-//      sortValue: {
-//        this.$store.commit('saveSortScore', this.values)
-//      }
+    methods: {
+      sortRestaurants(value) {
+        this.$emit('input', value)
+      }
     }
   }
 </script>

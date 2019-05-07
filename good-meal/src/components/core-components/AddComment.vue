@@ -65,8 +65,7 @@
         nom: '',
         commentaire: '',
         rating: 0,
-        reloadComponent: 0,
-        //        restaurantData: []
+        reloadComponent: 0
       }
     },
     components: {
@@ -83,7 +82,12 @@
         this.commentaire = '';
         this.rating = 0;
         this.reloadComponent += 1;
-      }
+      },
+      // sendFormData() {
+      //   this.$store.dispatch({
+      //     type: 
+      //   })
+      // }
     },
     computed: {
       restaurantData() {

@@ -24,11 +24,7 @@
       chooseScore (value) {
         this.$emit('input', value)
       }
-    },
-    computed: {
-      // Détecter les étoiles avec checked, et pouvoir envoyer ce score dans le store au moment de la validation du commentaire
     }
-
   }
 </script>
 

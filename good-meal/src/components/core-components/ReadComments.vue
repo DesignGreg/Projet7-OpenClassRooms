@@ -32,7 +32,6 @@
               <div class="read-comments__data" v-for="comment in restaurantData.ratings" :key="comment.comment">
                 <p class="row__first--restaurantAuthor"> {{ comment.author }} 
                 <span> 
-<!--                class="row__first--restaurantScore"> {{ comment.stars }} -->
                 <score-app :star-number="comment.stars"></score-app>
                 </span> </p>
                 <p class="row__first--restaurantComments"> {{ comment.comment }} </p>

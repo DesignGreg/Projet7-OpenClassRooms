@@ -39,7 +39,8 @@
       })
       this.google = google
       this.initMap();
-      this.askGeolocation();
+      this.addChangeBoundsListener();
+//      this.askGeolocation();
 
       // GoogleMapsLoader.load((google) => {
       //   this.$store.watch(
@@ -78,6 +79,7 @@
         }
         this.map = new this.google.maps.Map(element, options);
         this.infoWindow = new this.google.maps.InfoWindow;
+        this.$emit('map-initialized', { google: this.google, map: this.map })
       },
       askGeolocation() {
         if (navigator.geolocation) {
@@ -98,8 +100,8 @@
         }
       },
       addChangeBoundsListener () {
-        google.maps.event.addListener(this.map, 'bounds_changed', () => {
-          console.log('changed')
+        google.maps.event.addListener(this.map, 'bounds_changed', (event) => {
+          this.$emit('map-bounds-changed')
         })
       },
       //      useBounds() {

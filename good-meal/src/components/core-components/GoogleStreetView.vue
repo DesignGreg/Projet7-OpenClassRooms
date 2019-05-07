@@ -9,11 +9,7 @@
 
 <script>
   
-  // Lien statique HTML, en utilisant la Lat et Long du restaurant sélectionné (ID)
-  
-  
-//  const axios = require('axios');
-  
+
   export default {
     name: "google-street-view-app",
     props: ['long', 'lat'],
@@ -22,14 +18,6 @@
         return `https://maps.googleapis.com/maps/api/streetview?size=600x300&location=${this.lat},${this.long}&heading=151.78&pitch=-0.76&key=`
       }
     }
-//    mounted: {
-//      axios.get('http://localhost:8080/restaurantList.json').then((response) => {
-//        this.restaurantData = response.data[this.$route.params.restaurantID];
-//      }, (err) => {
-//        console.log(err);
-//        return false;
-//      });
-//    }
   }
 </script>
 

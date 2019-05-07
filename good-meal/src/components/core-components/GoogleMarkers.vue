@@ -26,8 +26,26 @@ export default {
     new this.google.maps.Marker({
       position: this.marker.position,
       map: this.map,
-      marker: this.marker
+      marker: this.marker,
+      icon: this.getIconUrl(this.marker.type)
     })
+  },
+  methods: {
+    getIconUrl (markerType) {
+      let icon
+      switch (this.marker.type) {
+        case 'restaurant': 
+          icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png'
+          break;
+        case 'user': 
+          icon = 'https://img.icons8.com/color/48/000000/marker.png'
+          break;
+        default:
+          icon = 'https://img.icons8.com/color/48/000000/marker.png'
+          break;
+      }
+      return icon
+    }
   }
 }
 </script>
