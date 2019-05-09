@@ -1,15 +1,16 @@
 <template>
   <div class="aside">
     <h2 class="aside__title"> {{ title }} </h2>
-<!--    <button-sort-restaurants class="aside__button">Trier</button-sort-restaurants>-->
     <button-sort-restaurants v-model="score" class="aside__button">Trier</button-sort-restaurants>
     <div class="aside__main-container scroller">
       <div class="aside__second-container">
-        <single-restaurant-app></single-restaurant-app>
+<!--        <div class="aside__data" v-for="(data,index) in displayRestaurantInfo" :key="data.restaurantName">-->
+<!--          :name="data.restaurantName" :rating="data.rating" :description="data.description"-->
+          <single-restaurant-app></single-restaurant-app>
+<!--        </div>-->
       </div>
     </div>
   </div>
-
 </template>
 
 
@@ -17,14 +18,12 @@
   import SingleRestaurant from './SingleRestaurant.vue';
   import ButtonSortRestaurants from '../side-components/ButtonSortRestaurants.vue';
 
-
   export default {
     name: 'header-app',
     data: function() {
       return {
         title: "Restaurants",
         score: []
-
       }
     },
     components: {
@@ -46,6 +45,7 @@
       margin-left: 1.5rem;
       margin-right: 1.5rem;
     }
+
     .aside__second-container {
       text-align: center;
     }

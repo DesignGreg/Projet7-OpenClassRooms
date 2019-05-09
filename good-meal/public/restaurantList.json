@@ -9,37 +9,31 @@
       {
         "stars": 4,
         "author": "Marc",
-        "date": "15/02/2017",
         "comment": "Un excellent restaurant, j'y reviendrai ! Par contre il vaut mieux aimer la viande."
          },
       {
         "stars": 5,
         "author": "Sylvain",
-        "date": "15/05/2017",
         "comment": "Tout simplement mon restaurant préféré !"
          },
       {
         "stars": 5,
         "author": "Patrick",
-        "date": "15/11/2017",
         "comment": "Généreux !!! Rien à dire de plus."
          },
       {
         "stars": 4,
         "author": "Marc",
-        "date": "15/01/2018",
         "comment": "Un excellent restaurant, j'y reviendrai ! Par contre il vaut mieux aimer la viande."
          },
       {
         "stars": 5,
         "author": "Sylvain",
-        "date": "15/04/2018",
         "comment": "Tout simplement mon restaurant préféré !"
          },
       {
         "stars": 5,
         "author": "Patrick",
-        "date": "15/08/2018",
         "comment": "Généreux !!! Rien à dire de plus."
          }
       ]
@@ -54,37 +48,31 @@
       {
         "stars": 5,
         "author": "Elodie",
-        "date": "15/02/2017",
         "comment": "Une minuscule pizzeria délicieuse cachée juste à côté du Sacré choeur !"
          },
       {
         "stars": 3,
         "author": "Paul",
-        "date": "15/05/2017",
         "comment": "J'ai trouvé ça correct, sans plus"
          },
       {
         "stars": 2,
         "author": "Yasmine",
-        "date": "15/11/2017",
         "comment": "Pâtes froides !"
          },
       {
         "stars": 5,
         "author": "Elodie",
-        "date": "15/01/2018",
         "comment": "Une minuscule pizzeria délicieuse cachée juste à côté du Sacré choeur !"
          },
       {
         "stars": 3,
         "author": "Paul",
-        "date": "15/04/2018",
         "comment": "J'ai trouvé ça correct, sans plus"
          },
       {
         "stars": 2,
         "author": "Yasmine",
-        "date": "15/08/2018",
         "comment": "Pâtes froides !"
          }
       ]
@@ -99,37 +87,31 @@
       {
         "stars": 5,
         "author": "Bryan",
-        "date": "15/02/2017",
         "comment": "La meilleure viande grillée au monde"
          },
       {
         "stars": 3,
         "author": "Sophie",
-        "date": "15/05/2017",
         "comment": "Très bon !"
          },
       {
         "stars": 4,
         "author": "Andrei",
-        "date": "15/11/2017",
         "comment": "Du solide ! Tentez l'entrecôte !"
          },
       {
         "stars": 5,
         "author": "Bryan",
-        "date": "15/01/2018",
         "comment": "La meilleure viande grillée au monde"
          },
       {
         "stars": 3,
         "author": "Sophie",
-        "date": "15/04/2018",
         "comment": "Très bon !"
          },
       {
         "stars": 4,
         "author": "Andrei",
-        "date": "15/08/2018",
         "comment": "Du solide ! Tentez l'entrecôte !"
          }
       ]
@@ -144,37 +126,31 @@
       {
         "stars": 1,
         "author": "Tristan",
-        "date": "15/02/2017",
         "comment": "Rien dans l'assiette. Pour ce prix !"
          },
       {
         "stars": 2,
         "author": "Anne",
-        "date": "15/05/2017",
         "comment": "Correct mais trop cher"
          },
       {
         "stars": 3,
         "author": "Hélène",
-        "date": "15/11/2017",
         "comment": "Cher mais pas mal et le personnel est sympa"
          },
       {
         "stars": 1,
         "author": "Tristan",
-        "date": "15/01/2018",
         "comment": "Rien dans l'assiette. Pour ce prix !"
          },
       {
         "stars": 2,
         "author": "Anne",
-        "date": "15/04/2018",
         "comment": "Correct mais trop cher"
          },
       {
         "stars": 3,
         "author": "Hélène",
-        "date": "15/08/2018",
         "comment": "Cher mais pas mal et le personnel est sympa"
          }
       ]
@@ -189,37 +165,31 @@
       {
         "stars": 5,
         "author": "Vincent",
-        "date": "15/02/2017",
         "comment": "Formule illimité de ouf ! Pizza à volonté !!!"
          },
       {
         "stars": 3,
         "author": "Pauline",
-        "date": "15/05/2017",
         "comment": "Beaucoup (trop) à manger et juste bon..."
          },
       {
         "stars": 4,
         "author": "Théo",
-        "date": "15/11/2017",
         "comment": "Entre potes excellent l'illimité !"
          },
       {
         "stars": 5,
         "author": "Vincent",
-        "date": "15/01/2018",
         "comment": "Formule illimité de ouf ! Pizza à volonté !!!"
          },
       {
         "stars": 3,
         "author": "Pauline",
-        "date": "15/04/2018",
         "comment": "Beaucoup (trop) à manger et juste bon..."
          },
       {
         "stars": 4,
         "author": "Théo",
-        "date": "15/08/2018",
         "comment": "Entre potes excellent l'illimité !"
          }
       ]
@@ -234,37 +204,31 @@
       {
         "stars": 4,
         "author": "Camille",
-        "date": "15/02/2017",
         "comment": "Plein de produits, de saveurs, à tester !"
          },
       {
         "stars": 1,
         "author": "Sarah",
-        "date": "15/05/2017",
         "comment": "Genre malade le lendemain, super..."
          },
       {
         "stars": 4,
         "author": "Peter",
-        "date": "15/11/2017",
         "comment": "Très bon"
          },
       {
         "stars": 4,
         "author": "Camille",
-        "date": "15/01/2018",
         "comment": "Plein de produits, de saveurs, à tester !"
          },
       {
         "stars": 1,
         "author": "Sarah",
-        "date": "15/04/2018",
         "comment": "Genre malade le lendemain, super..."
          },
       {
         "stars": 4,
         "author": "Peter",
-        "date": "15/08/2018",
         "comment": "Très bon"
          }
       ]

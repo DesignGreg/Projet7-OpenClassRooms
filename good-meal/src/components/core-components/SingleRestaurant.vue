@@ -54,6 +54,8 @@
     computed: {
       displayRestaurantInfo() {
         return this.$store.getters.getRestaurantInfo;
+//        let restaurants = this.$store.getters.getRestaurantInfo;
+//        return restaurants.filter( restaurant => restaurant.averageRating >= this.sliderRating)
       }
     }
   }

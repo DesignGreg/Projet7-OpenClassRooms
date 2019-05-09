@@ -30,7 +30,7 @@
                     <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="description" required></textarea>
                   </div>
                   <div class="add__restaurant--button-container">
-                  <button-validate-form-add-restaurant class="button-text" @click="postData">Confirmer</button-validate-form-add-restaurant>
+                  <button-validate-form-add-restaurant class="button-text" @click="sendNewRestaurant">Confirmer</button-validate-form-add-restaurant>
                   </div>
                 </div>
               </form>
@@ -54,15 +54,22 @@
         nom: '',
         description: '',
         adresse: '',
+        lat: null,
+        lng: null
       }
     },
     components: {
       ButtonValidateFormAddRestaurant
     },
     methods: {
-      postData() {
-        //faire un post Axios avec les Data
-        
+      sendNewRestaurant() {
+        this.$store.commit('addRestaurant', {
+          restaurantName: this.nom,
+          address: this.adresse,
+          description: this.description,
+          lat: this.lat,
+          long: this.lng
+        });
       }
     }
   }

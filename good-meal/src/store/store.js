@@ -11,8 +11,6 @@ export const store = new Vuex.Store({
     restaurantList: [],
     visibleRestaurant: [],
     sortValue: [],
-    newComments: [],
-    newRestaurants: []
   },
   getters: {
     getRestaurantById: (state) => {
@@ -23,13 +21,6 @@ export const store = new Vuex.Store({
     getRestaurantInfo: state => {
       return state.visibleRestaurant;
     },
-    // getComments: state => {
-    //   console.log(state);
-    //   return (restaurantID) => {
-    //     const restaurant = state.restaurantList[restaurantID];
-    //     return restaurant.ratings;
-    //   }
-    // }
   },
   mutations: {
     setRestaurantList: (state, {
@@ -37,16 +28,17 @@ export const store = new Vuex.Store({
     }) => {
       state.restaurantList = list.map(formatRestaurant);
     },
-    selectVisibleRestaurant (state, bounds) {
+    selectVisibleRestaurant(state, bounds) {
       state.visibleRestaurant = state.restaurantList.filter((restaurant) => {
-        return restaurant.long >= bounds.ia.j && restaurant.long <= bounds.ia.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l 
-      })
+        return restaurant.long >= bounds.ia.j && restaurant.long <= bounds.ia.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l;
+      });
+    },
+    addRestaurant() {
+      // push dans array restaurantList
+    },
+    addComment() {
+      // push dans array restaurantList, en fonction de l'index du restaurant, et donc dans le sous-tableau ratings
     }
-    // addComment: (state, {
-      
-    // }) => {
-    //   state.newComments =
-    // },
   },
   actions: {
     getData: async function (context) {
@@ -60,11 +52,6 @@ export const store = new Vuex.Store({
           console.log(err);
           return false;
         });
-    },
-    UploadComment(context) {
-      context.commit('addComment', {
-        newComments: newComments
-      });
     }
   }
 });

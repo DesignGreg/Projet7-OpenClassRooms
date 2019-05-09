@@ -39,7 +39,7 @@
 
 
                 <div class="add__comments--button-container">
-                  <button-validate-form-add-comments class="button-text">Confirmer</button-validate-form-add-comments>
+                  <button-validate-form-add-comments class="button-text" @click="sendNewComment">Confirmer</button-validate-form-add-comments>
                 </div>
 
               </form>
@@ -83,11 +83,13 @@
         this.rating = 0;
         this.reloadComponent += 1;
       },
-      // sendFormData() {
-      //   this.$store.dispatch({
-      //     type: 
-      //   })
-      // }
+      sendNewComment() {
+        this.$store.commit('addComment', {
+          stars: this.rating,
+          author: this.nom,
+          comment: this.commentaire
+        });
+      }
     },
     computed: {
       restaurantData() {

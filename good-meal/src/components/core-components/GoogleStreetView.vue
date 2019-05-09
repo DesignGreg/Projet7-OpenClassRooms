@@ -8,8 +8,6 @@
 
 
 <script>
-  
-
   export default {
     name: "google-street-view-app",
     props: ['long', 'lat'],
