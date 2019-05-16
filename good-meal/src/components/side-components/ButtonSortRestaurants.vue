@@ -2,7 +2,7 @@
 
   <div id="slider">
     
-    <vue-slider name="score" :value="range" :data="data" :enable-cross="false" @input="sortRestaurants"></vue-slider>
+    <vue-slider name="score" :value="range" :data="data" :enable-cross="false" @change="sortRestaurants"></vue-slider>
 
   </div>
 
@@ -14,12 +14,6 @@
   
   
   export default {
-    props: {
-      onClick: {
-        type: Function,
-        required: true
-      },
-    },
     data: function() {
       return {
         range: [0,5],
@@ -28,6 +22,8 @@
     },
     methods: {
       sortRestaurants(value) {
+        this.$store.commit('setSortValue', value)
+        this.$store.commit('selectVisibleRestaurant')
         this.$emit('input', value)
       }
     }

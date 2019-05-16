@@ -4,10 +4,9 @@
     <button-sort-restaurants v-model="score" class="aside__button">Trier</button-sort-restaurants>
     <div class="aside__main-container scroller">
       <div class="aside__second-container">
-<!--        <div class="aside__data" v-for="(data,index) in displayRestaurantInfo" :key="data.restaurantName">-->
-<!--          :name="data.restaurantName" :rating="data.rating" :description="data.description"-->
-          <single-restaurant-app></single-restaurant-app>
-<!--        </div>-->
+       <div class="aside__data" v-for="(restaurant, index) in getRestaurantList" :key="restaurant.restaurantName">
+          <single-restaurant-app :restaurant="restaurant" :index="index"></single-restaurant-app>
+       </div>
       </div>
     </div>
   </div>
@@ -30,11 +29,11 @@
       "single-restaurant-app": SingleRestaurant,
       ButtonSortRestaurants
     },
-//    computed: {
-//      displayRestaurantInfo() {
-//        return this.$store.getters.getRestaurantInfo;
-//      }
-//    }
+   computed: {
+     getRestaurantList() {
+       return this.$store.getters.getRestaurantList;
+     }
+   }
   }
 </script>
 

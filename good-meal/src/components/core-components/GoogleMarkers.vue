@@ -22,13 +22,21 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      mapMarker: null
+    }
+  },
   mounted () {
-    new this.google.maps.Marker({
+    this.mapMarker = new this.google.maps.Marker({
       position: this.marker.position,
       map: this.map,
       marker: this.marker,
       icon: this.getIconUrl(this.marker.type)
     })
+  },
+  beforeDestroy () {
+    this.mapMarker.setMap(null)
   },
   methods: {
     getIconUrl (markerType) {

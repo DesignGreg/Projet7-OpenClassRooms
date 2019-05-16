@@ -1,18 +1,17 @@
 <template>
   <div class="singleRestaurant">
-    <div class="aside__data" v-for="(data,index) in displayRestaurantInfo" :key="data.restaurantName">
       <ul class="aside__list">
-        <li class="aside__name"> {{ data.restaurantName }}</li>
+        <li class="aside__name"> {{ restaurant.restaurantName }}</li>
         <li class="aside__score">
-          <score-app :star-number="data.averageRating"></score-app>
+          <score-app :star-number="restaurant.averageRating"></score-app>
         </li>
-        <li class="aside__description"> {{ data.description }} </li>
+        <li class="aside__description"> {{ restaurant.description }} </li>
         <div class="container">
           <div class="row row__first">
             <div class="col-6">
               <li class="aside__button-read-comment">
                 <button-read-comments :onClick="button">
-                  <router-link class="button-text" :to='"/read-comments/" + index' >Les avis</router-link>
+                  <router-link class="button-text" :to="`/read-comments/${index}`" >Les avis</router-link>
                 </button-read-comments>
               </li>
             </div>
@@ -26,7 +25,6 @@
           </div>
         </div>
       </ul>
-    </div>
   </div>
 </template>
 
@@ -38,6 +36,7 @@
 
   export default {
     name: "single-restaurant-app",
+    props: [ 'restaurant', 'index' ],
     data: function() {
       return {}
     },

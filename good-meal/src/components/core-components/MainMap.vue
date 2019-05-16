@@ -72,13 +72,14 @@
         this.marker = marker;
       },
       selectVisibleMarker () {
-        this.$store.commit('selectVisibleRestaurant', this.map.getBounds())
+        this.$store.commit('setBoundsValue', this.map.getBounds())
+        this.$store.commit('selectVisibleRestaurant')
       }
     },
     computed: {
       markers() {
         const monTab = [
-          ...this.$store.getters.getRestaurantInfo.map((restaurant, index) => {
+          ...this.$store.getters.getRestaurantList.map((restaurant, index) => {
             return {
               id: index,
               position: {
