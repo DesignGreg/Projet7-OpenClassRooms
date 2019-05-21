@@ -31,15 +31,15 @@
             <div class="col-8">
               <form action="" method="post" class="add-comment__form">
                 <label class="add-comment__nameLabel" for="name">Prénom</label>
-                <input class="add-comment__nameInput" type="text" name="name" id="name" v-model="nom" required>
-                <set-score-app v-model="rating" :key="reloadComponent"></set-score-app>
+                <input class="add-comment__nameInput" type="text" name="name" id="name" v-model="comment.author" required>
+                <set-score-app v-model="comment.stars" :key="reloadComponent"></set-score-app>
                 <label class="add-comment__textLabel" for="comment">Commentaire</label>
-                <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="commentaire" required></textarea>
+                <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="comment.comment" required></textarea>
 
 
 
                 <div class="add__comments--button-container">
-                  <button-validate-form-add-comments class="button-text" @click="sendNewComment">Confirmer</button-validate-form-add-comments>
+                  <button class="button-text" @click.prevent="sendNewComment">Confirmer</button>
                 </div>
 
               </form>
@@ -53,7 +53,6 @@
 
 
 <script>
-  const axios = require('axios');
   import GoogleStreetView from './GoogleStreetView.vue';
   import ButtonValidateFormAddComments from '../side-components/ButtonValidateFormAddComments.vue';
   import SetScoreStars from '../side-components/SetScoreStars.vue';
@@ -62,9 +61,11 @@
     name: 'add-comment-app',
     data: function() {
       return {
-        nom: '',
-        commentaire: '',
-        rating: 0,
+        comment: {
+          author: '',
+          comment: '',
+          stars: 0
+        },
         reloadComponent: 0
       }
     },
@@ -74,20 +75,22 @@
       "set-score-app": SetScoreStars
     },
     mounted() {
-      this.getRestaurantData(this.$route.params.restaurantID);
+      // this.getRestaurantData(this.$route.params.restaurantID);
     },
     methods: {
       restore() {
         this.nom = '';
         this.commentaire = '';
         this.rating = 0;
+
+        // essayer sans, et m'expliquer pourquoi c'est là si c'est nécessaire
         this.reloadComponent += 1;
       },
       sendNewComment() {
+        console.log('click')
         this.$store.commit('addComment', {
-          stars: this.rating,
-          author: this.nom,
-          comment: this.commentaire
+          restaurantId: this.$route.params.restaurantID,
+          comment: this.comment
         });
       }
     },

@@ -3,7 +3,7 @@
       <ul class="aside__list">
         <li class="aside__name"> {{ restaurant.restaurantName }}</li>
         <li class="aside__score">
-          <score-app :star-number="restaurant.averageRating"></score-app>
+          <score-app :star-number="averageRating"></score-app>
         </li>
         <li class="aside__description"> {{ restaurant.description }} </li>
         <div class="container">
@@ -11,14 +11,14 @@
             <div class="col-6">
               <li class="aside__button-read-comment">
                 <button-read-comments :onClick="button">
-                  <router-link class="button-text" :to="`/read-comments/${index}`" >Les avis</router-link>
+                  <router-link class="button-text" :to="`/read-comments/${restaurant.ID}`" >Les avis</router-link>
                 </button-read-comments>
               </li>
             </div>
             <div class="col-6">
               <li class="aside__button-add-comment">
                 <button-add-comment :onClick="button">
-                  <router-link class="button-text" :to='"/add-comment/" + index'>Votre avis</router-link>
+                  <router-link class="button-text" :to="`/add-comment/${restaurant.ID}`">Votre avis</router-link>
                 </button-add-comment>
               </li>
             </div>
@@ -36,7 +36,7 @@
 
   export default {
     name: "single-restaurant-app",
-    props: [ 'restaurant', 'index' ],
+    props: [ 'restaurant' ],
     data: function() {
       return {}
     },
@@ -51,10 +51,8 @@
       }
     },
     computed: {
-      displayRestaurantInfo() {
-        return this.$store.getters.getRestaurantInfo;
-//        let restaurants = this.$store.getters.getRestaurantInfo;
-//        return restaurants.filter( restaurant => restaurant.averageRating >= this.sliderRating)
+      averageRating () {
+        return this.$store.getters.getRestaurantAvgRating(this.restaurant.ID)
       }
     }
   }

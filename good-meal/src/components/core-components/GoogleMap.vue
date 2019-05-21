@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="google-map" v-bind:id="mapName" ref="mainMap" @click="openComponent">
+    <div class="google-map" v-bind:id="mapName" ref="mainMap">
     </div>
     <template v-if="Boolean(this.google) && Boolean(this.map)">
       <slot :google="google" :map="map"></slot>
@@ -37,6 +37,7 @@
       this.google = google
       this.initMap();
       this.addChangeBoundsListener();
+      this.addClickListener();
     },
     methods: {
       initMap() {
@@ -57,23 +58,11 @@
           this.$emit('map-bounds-changed')
         })
       },
-      openComponent(coord) {
-//        let icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png';
-//        const position = new google.maps.LatLng(coord.lat, coord.lng);
-//        const marker = new google.maps.Marker({
-//          position,
-//          map: this.map,
-//          icon
-//        });
-//        this.markers.push(marker);
-        
-        google.maps.event.addListener(this.map, 'click', function(event) {
-          console.log(event.latLng);
-        });
-        
-        console.log('Done');
-        this.$router.push('/add-restaurant/');
-      },
+      addClickListener () {
+        google.maps.event.addListener(this.map, 'click', (event) => {
+          this.$emit('map-clicked', event)
+        })
+      }
     },
   };
 </script>

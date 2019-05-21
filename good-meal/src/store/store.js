@@ -16,62 +16,76 @@ export const store = new Vuex.Store({
   getters: {
     getRestaurantById: (state) => {
       return (id) => {
-        return state.restaurantList[id];
+        const restaurantIndex = getRestaurantIndex(state.restaurantList, id)
+        console.log({id, restaurantIndex})
+        return state.restaurantList[restaurantIndex];
       }
     },
     getRestaurantList: state => {
       return state.visibleRestaurant;
     },
     getSortValue: (state) => {
-      return state.sortValue
+      return state.sortValue;
     },
     
     getBoundsValue: (state) => {
-      return state.boundsValue
+      return state.boundsValue;
+    },
+    getRestaurantAvgRating: (state) => {
+      return (id) => {
+        const restaurantIndex = getRestaurantIndex(state.restaurantList, id)
+        const { ratings } = state.restaurantList[restaurantIndex]
+
+        const avgRating = ratings.reduce((acc, rating) => {
+          return acc + (rating.stars / ratings.length);
+        }, 0)
+        return Math.round(avgRating)
+      }
     }
   },
   mutations: {
-    setRestaurantList: (state, {
-      list
-    }) => {
-      state.restaurantList = list.map(formatRestaurant);
+    setRestaurantList: (state, { list }) => {
+      state.restaurantList = list
     },
     selectVisibleRestaurant(state) {
-      const bounds = state.boundsValue
-      const range = state.sortValue
+      const bounds = state.boundsValue;
+      const range = state.sortValue;
       state.visibleRestaurant = state.restaurantList.filter((restaurant) => {
-        let shouldBeVisible = true
-        let isInMap = true
-        let isInRange = true
+        let shouldBeVisible = true;
+        let isInMap = true;
+        let isInRange = true;
         
         if (bounds) {
-          isInMap = restaurant.long >= bounds.ia.j && restaurant.long <= bounds.ia.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l
-          shouldBeVisible = shouldBeVisible && isInMap
+          isInMap = restaurant.long >= bounds.ia.j && restaurant.long <= bounds.ia.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l;
+          shouldBeVisible = shouldBeVisible && isInMap;
         }
         
         if (range && range.length === 2) {
-          isInRange = restaurant.ratings[0].stars >= range[0] && restaurant.ratings[1].stars <= range[1]
-          shouldBeVisible = shouldBeVisible && isInRange
+          isInRange = restaurant.ratings[0].stars >= range[0] && restaurant.ratings[1].stars <= range[1];
+          shouldBeVisible = shouldBeVisible && isInRange;
         }
         
         console.log(restaurant.restaurantName, {
           shouldBeVisible, isInMap, isInRange, avg: restaurant.ratings[0]
         })
 
-        return shouldBeVisible
+        return shouldBeVisible;
       });
     },
     setBoundsValue: (state, bounds) => {
-      state.boundsValue = bounds
+      state.boundsValue = bounds;
     },
     setSortValue: (state, range) => {
       // console.log(state, range)
-      state.sortValue = range
+      state.sortValue = range;
     },
     addRestaurant() {
       // push dans array restaurantList
     },
-    addComment() {
+    addComment: (state, { restaurantId, comment }) => {
+      const restaurantIndex = getRestaurantIndex(state.restaurantList, restaurantId)
+
+      state.restaurantList[restaurantIndex].ratings.push({ ...comment })
       // push dans array restaurantList, en fonction de l'index du restaurant, et donc dans le sous-tableau ratings
     }
   },
@@ -91,12 +105,7 @@ export const store = new Vuex.Store({
   }
 });
 
-function formatRestaurant(restaurant) {
-  const sum = restaurant.ratings.reduce((acc, rating) => {
-    return acc + rating.stars;
-  }, 0);
-  return {
-    ...restaurant,
-    averageRating: Math.round(sum / restaurant.ratings.length),
-  }
+function getRestaurantIndex (restaurantList, id) { 
+  return restaurantList
+    .findIndex((restaurant) => restaurant.ID === parseInt(id))
 }

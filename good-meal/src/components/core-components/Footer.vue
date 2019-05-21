@@ -1,6 +1,5 @@
 <template>
   <div class="footer">
-<!--   <button-add-restaurant  :onClick="button"><router-link class="button-text" :to='"/add-restaurant/"'>Ajouter restaurant</router-link></button-add-restaurant>-->
     <div class="footer__info">
       <p class="footer__info--companyName"> {{ companyName }} </p>
       <p class="footer__info--companyAddress"> {{ companyAddress }} </p>
@@ -14,7 +13,6 @@
 
 
 <script>
-//  import ButtonAddRestaurant from '../side-components/ButtonAddRestaurant.vue';
   import ButtonLegalNotices from '../side-components/ButtonLegalNotices.vue';
   
   export default {

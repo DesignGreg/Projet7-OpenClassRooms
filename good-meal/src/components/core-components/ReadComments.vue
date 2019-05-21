@@ -16,7 +16,7 @@
                 </li>
 
                 <li>
-                  <score-app :star-number="restaurantData.averageRating"></score-app>
+                  <score-app :star-number="averageRating"></score-app>
                 </li>
 
                 <li>
@@ -65,6 +65,10 @@
     computed: {
       restaurantData () {
         return this.$store.getters.getRestaurantById(this.$route.params.restaurantID)
+      },
+      averageRating () {
+        return this.$store.getters.getRestaurantAvgRating(this.$route.params.restaurantID)
+
       }
     }
   }

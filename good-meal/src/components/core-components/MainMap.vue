@@ -1,7 +1,8 @@
 <template>
-  <google-map 
+  <google-map
     @map-initialized="initialize"
-    @map-bounds-changed="selectVisibleMarker">
+    @map-bounds-changed="selectVisibleMarker"
+    @map-clicked="openReadOrAddComponent">
     <template slot-scope="{ google, map }">
       <google-markers v-for="marker in markers" :marker="marker" :map="map" :google="google"></google-markers>
     </template>
@@ -21,7 +22,9 @@
         google: null,
         mapName: this.name + "-map",
         userCoord: {},
-        userMarker: { type: 'user' },
+        userMarker: {
+          type: 'user'
+        },
         marker: null,
         map: null,
         bounds: null,
@@ -36,7 +39,7 @@
       this.askGeolocation();
     },
     methods: {
-      initialize (data) {
+      initialize(data) {
         this.map = data.map
         this.google = data.google
       },
@@ -54,11 +57,11 @@
             }
             this.map.setCenter(pos);
           }, function() {
-            // handleLocationError(true, this.infoWindow, this.map.getCenter());
+             handleLocationError(true, this.infoWindow, this.map.getCenter());
           });
         } else {
-          // Browser doesn't support Geolocation
-          // handleLocationError(false, this.infoWindow, this.map.getCenter());
+//           Browser doesn't support Geolocation
+           handleLocationError(false, this.infoWindow, this.map.getCenter());
         }
       },
       addMarker(coord) {
@@ -71,14 +74,30 @@
         });
         this.marker = marker;
       },
-      selectVisibleMarker () {
+      selectVisibleMarker() {
         this.$store.commit('setBoundsValue', this.map.getBounds())
         this.$store.commit('selectVisibleRestaurant')
+      },
+      openReadOrAddComponent(event) {
+        console.log(event.latLng);
+
+        let icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png';
+        // const position = new google.maps.LatLng(coord.lat, coord.lng);
+        // const marker = new google.maps.Marker({
+        //   position,
+        //   map: this.map,
+        //   icon
+        // });
+        // this.markers.push(marker);
+
+
+        // this.$router.push('/add-restaurant/');
+
       }
     },
     computed: {
       markers() {
-        const monTab = [
+        const markersArray = [
           ...this.$store.getters.getRestaurantList.map((restaurant, index) => {
             return {
               id: index,
@@ -91,9 +110,9 @@
           })
         ]
         if (this.userMarker !== {}) {
-          monTab.push(this.userMarker)
+          markersArray.push(this.userMarker)
         }
-        return monTab
+        return markersArray
       }
     }
   }

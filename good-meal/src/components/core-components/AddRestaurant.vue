@@ -45,7 +45,6 @@
 
 <script>
   import ButtonValidateFormAddRestaurant from '../side-components/ButtonValidateFormAddRestaurant.vue';
-  const axios = require('axios');
   
   export default {
     name: 'add-restaurant-app',
