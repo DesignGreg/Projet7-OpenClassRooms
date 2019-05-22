@@ -39,7 +39,7 @@
 
 
                 <div class="add__comments--button-container">
-                  <button class="button-text" @click.prevent="sendNewComment">Confirmer</button>
+                  <button-validate-form class="button-text" :onClick.self="sendNewComment">Confirmer</button-validate-form>
                 </div>
 
               </form>
@@ -54,7 +54,7 @@
 
 <script>
   import GoogleStreetView from './GoogleStreetView.vue';
-  import ButtonValidateFormAddComments from '../side-components/ButtonValidateFormAddComments.vue';
+  import ButtonValidateForm from '../side-components/ButtonValidateForm.vue';
   import SetScoreStars from '../side-components/SetScoreStars.vue';
 
   export default {
@@ -71,7 +71,7 @@
     },
     components: {
       "google-street-view-app": GoogleStreetView,
-      ButtonValidateFormAddComments,
+      ButtonValidateForm,
       "set-score-app": SetScoreStars
     },
     mounted() {
