@@ -5,32 +5,32 @@
         <div class="container">
           <div class="row row__first">
             <div class="col-12">
-              <p class="add-restaurant__title">Ajoutez un restaurant...</p>
+              <p class="add-restaurant__title">Ajoutez un restaurant</p>
               <router-link class="add-restaurant__link" :to='"/"'>
-                    <i class="fas fa-arrow-circle-down"></i>
+                <i class="fas fa-arrow-circle-down"></i>
               </router-link>
             </div>
           </div>
           <div class="row row__second">
             <div class="col-12">
-              <form action="" method="post" class="add-restaurant__form">
+              <form action="" method="post" class="add-restaurant__form" @sendNewRestaurant="storeCoord">
                 <div class="row row__third">
                   <div class="col-6">
                     <label class="add-restaurant__nameLabel" for="name">Nom</label>
-                    <input class="add-restaurant__nameInput" size="30" type="text" name="name" id="name" v-model="nom" required>
+                    <input class="add-restaurant__nameInput" size="30" type="text" name="name" id="name" v-model="newRestaurant.nom" required>
                   </div>
                   <div class="col-6">
                     <label class="add-restaurant__adresseLabel" for="name">Adresse</label>
-                    <textarea class="add-restaurant__adresseText" name="Adresse" id="text" cols="30" rows="3" v-model="adresse" required></textarea>
+                    <textarea class="add-restaurant__adresseText" name="Adresse" id="text" cols="30" rows="3" v-model="newRestaurant.adresse" required></textarea>
                   </div>
                 </div>
                 <div class="row row__fourth">
                   <div class="add-restaurant__descriptionContainer col-12">
                     <label class="add-restaurant__descriptionLabel" for="name">Description</label>
-                    <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="description" required></textarea>
+                    <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="newRestaurant.description" required></textarea>
                   </div>
                   <div class="add__restaurant--button-container">
-                  <button-validate-form class="button-text" @click.prevent="sendNewRestaurant">Confirmer</button-validate-form>
+                    <button-validate-form class="button-text" :onClick.prevent="sendNewRestaurant">Confirmer</button-validate-form>
                   </div>
                 </div>
               </form>
@@ -45,16 +45,18 @@
 
 <script>
   import ButtonValidateForm from '../side-components/ButtonValidateForm.vue';
-  
+
   export default {
     name: 'add-restaurant-app',
     data: function() {
       return {
-        nom: '',
-        description: '',
-        adresse: '',
-        lat: null,
-        lng: null
+        newRestaurant: {
+          nom: '',
+          description: '',
+          adresse: '',
+          lat: null,
+          lng: null
+        }
       }
     },
     components: {
@@ -63,12 +65,23 @@
     methods: {
       sendNewRestaurant() {
         this.$store.commit('addRestaurant', {
-          restaurantName: this.nom,
-          address: this.adresse,
-          description: this.description,
-          lat: this.lat,
-          long: this.lng
+          newRestaurant: this.newRestaurant
         });
+        this.$router.push('"/"');
+
+        console.log('Ok');
+        console.log(this.newRestaurant.nom);
+        console.log(this.newRestaurant.description);
+        console.log(this.newRestaurant.adresse);
+        console.log(this.newRestaurant.lat);
+        console.log(this.newRestaurant.lng);
+      },
+      storeCoord() {
+        this.newRestaurant.lat = '5';
+        this.newRestaurant.lng = '5';
+        console.log(this.lat);
+        console.log(this.lng);
+        console.log('Ok');
       }
     }
   }
@@ -90,15 +103,15 @@
     height: 260px;
     overflow: auto;
   }
-  
-  .row__second{
+
+  .row__second {
     margin-bottom: 0;
   }
-  
+
   .row__third {
     margin-bottom: 1rem;
   }
-  
+
   .row__fourth {
     margin-bottom: 0;
   }
@@ -142,42 +155,42 @@
     display: inline-block;
     width: 90%;
   }
-  
+
   input {
     border-width: 1px;
     border-color: #26A65B;
     border-radius: 0.5rem;
   }
-  
+
   input:focus {
     outline: none;
     box-shadow: 1px 1px 1px #26A65B;
   }
-  
+
   textarea {
     border-color: #26A65B;
     border-radius: 0.5rem;
   }
-  
+
   textarea:focus {
     outline: none;
     box-shadow: 1px 1px 1px #26A65B;
   }
-  
+
   .fa-arrow-circle-down {
     font-size: 2rem;
     padding-left: 2rem;
     color: #BD0000;
   }
-  
+
   .fa-arrow-circle-down:hover {
     zoom: 105%;
   }
-  
+
   .add__restaurant--button-container {
     margin: 0 auto;
   }
-  
+
   .button-text {
     text-decoration: none;
     color: #EBEBEB;

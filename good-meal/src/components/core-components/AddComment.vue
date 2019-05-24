@@ -36,8 +36,6 @@
                 <label class="add-comment__textLabel" for="comment">Commentaire</label>
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="comment.comment" required></textarea>
 
-
-
                 <div class="add__comments--button-container">
                   <button-validate-form class="button-text" :onClick.self="sendNewComment">Confirmer</button-validate-form>
                 </div>
@@ -74,16 +72,12 @@
       ButtonValidateForm,
       "set-score-app": SetScoreStars
     },
-    mounted() {
-      // this.getRestaurantData(this.$route.params.restaurantID);
-    },
     methods: {
       restore() {
         this.nom = '';
         this.commentaire = '';
         this.rating = 0;
-
-        // essayer sans, et m'expliquer pourquoi c'est là si c'est nécessaire
+        
         this.reloadComponent += 1;
       },
       sendNewComment() {

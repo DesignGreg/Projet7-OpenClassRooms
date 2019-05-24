@@ -6,7 +6,7 @@
       <p class="footer__info--companyCity"> {{ companyCity }} </p>
     </div>
     <div class="footer__legalNotices">
-    <button-legal-notices>Mentions Légales</button-legal-notices>
+    <button-legal-notices :onClick="button">Mentions Légales</button-legal-notices>
     </div>
   </div>
 </template>

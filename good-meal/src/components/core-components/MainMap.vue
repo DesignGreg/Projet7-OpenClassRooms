@@ -1,8 +1,5 @@
 <template>
-  <google-map
-    @map-initialized="initialize"
-    @map-bounds-changed="selectVisibleMarker"
-    @map-clicked="openReadOrAddComponent">
+  <google-map @map-initialized="initialize" @map-bounds-changed="selectVisibleMarker" @map-clicked="openReadOrAddComponent">
     <template slot-scope="{ google, map }">
       <google-markers v-for="marker in markers" :marker="marker" :map="map" :google="google"></google-markers>
     </template>
@@ -37,6 +34,7 @@
     },
     mounted() {
       this.askGeolocation();
+      this.clickOpenReadCommentsComponent();
     },
     methods: {
       initialize(data) {
@@ -55,13 +53,26 @@
               ...this.userMarker,
               position: pos,
             }
+
+            this.infoWindow.setPosition(pos);
+            this.infoWindow.setContent('Location found.');
+            this.infoWindow.open(this.map);
+
             this.map.setCenter(pos);
           }, function() {
-             handleLocationError(true, this.infoWindow, this.map.getCenter());
+            handleLocationError(true, this.infoWindow, this.map.getCenter());
           });
         } else {
-//           Browser doesn't support Geolocation
-           handleLocationError(false, this.infoWindow, this.map.getCenter());
+          //           Browser doesn't support Geolocation
+          handleLocationError(false, this.infoWindow, this.map.getCenter());
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          this.infoWindow.setPosition(pos);
+          this.infoWindow.setContent(browserHasGeolocation ?
+            'Error: The Geolocation service failed.' :
+            'Error: Your browser doesn\'t support geolocation.');
+          this.infoWindow.open(this.map);
         }
       },
       addMarker(coord) {
@@ -80,6 +91,7 @@
       },
       openReadOrAddComponent(event) {
         console.log(event.latLng);
+        this.$emit('storeCoord', event.latLng);
 
         let icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png';
         // const position = new google.maps.LatLng(coord.lat, coord.lng);
@@ -91,8 +103,13 @@
         // this.markers.push(marker);
 
 
-        // this.$router.push('/add-restaurant/');
+        this.$router.push('/add-restaurant/');
 
+      },
+      clickOpenReadCommentsComponent() {
+        google.maps.event.addListener(this.marker, 'click', function() {
+          console.log('Ok');
+        });
       }
     },
     computed: {

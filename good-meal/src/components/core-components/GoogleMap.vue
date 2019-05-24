@@ -30,14 +30,15 @@
       }
     },
 
-    async mounted () {
+    async mounted() {
       const google = await GoogleMapsAPILoader({
         apiKey: ''
       })
       this.google = google
       this.initMap();
       this.addChangeBoundsListener();
-      this.addClickListener();
+      this.clickOpenRestaurantComponent();
+//      this.clickOpenReadCommentsComponent();
     },
     methods: {
       initMap() {
@@ -51,18 +52,26 @@
         }
         this.map = new this.google.maps.Map(element, options);
         this.infoWindow = new this.google.maps.InfoWindow;
-        this.$emit('map-initialized', { google: this.google, map: this.map })
+        this.$emit('map-initialized', {
+          google: this.google,
+          map: this.map
+        })
       },
-      addChangeBoundsListener () {
+      addChangeBoundsListener() {
         google.maps.event.addListener(this.map, 'bounds_changed', (event) => {
           this.$emit('map-bounds-changed')
         })
       },
-      addClickListener () {
+      clickOpenRestaurantComponent() {
         google.maps.event.addListener(this.map, 'click', (event) => {
           this.$emit('map-clicked', event)
         })
-      }
+      },
+//      clickOpenReadCommentsComponent() {
+//        google.maps.event.addListener(this.marker, 'click', function() {
+//          console.log('Ok');
+//        });
+//      }
     },
   };
 </script>

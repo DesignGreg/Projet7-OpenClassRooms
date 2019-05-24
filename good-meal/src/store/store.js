@@ -16,8 +16,8 @@ export const store = new Vuex.Store({
   getters: {
     getRestaurantById: (state) => {
       return (id) => {
-        const restaurantIndex = getRestaurantIndex(state.restaurantList, id)
-        console.log({id, restaurantIndex})
+        const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
+        console.log({id, restaurantIndex});
         return state.restaurantList[restaurantIndex];
       }
     },
@@ -33,19 +33,19 @@ export const store = new Vuex.Store({
     },
     getRestaurantAvgRating: (state) => {
       return (id) => {
-        const restaurantIndex = getRestaurantIndex(state.restaurantList, id)
-        const { ratings } = state.restaurantList[restaurantIndex]
+        const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
+        const { ratings } = state.restaurantList[restaurantIndex];
 
         const avgRating = ratings.reduce((acc, rating) => {
           return acc + (rating.stars / ratings.length);
         }, 0)
-        return Math.round(avgRating)
+        return Math.round(avgRating);
       }
     }
   },
   mutations: {
     setRestaurantList: (state, { list }) => {
-      state.restaurantList = list
+      state.restaurantList = list;
     },
     selectVisibleRestaurant(state) {
       const bounds = state.boundsValue;
@@ -79,14 +79,13 @@ export const store = new Vuex.Store({
       // console.log(state, range)
       state.sortValue = range;
     },
-    addRestaurant() {
-      // push dans array restaurantList
+    addRestaurant: (state, { newRestaurant }) => {
+      state.restaurantList.push({ ...newRestaurant })
     },
     addComment: (state, { restaurantId, comment }) => {
-      const restaurantIndex = getRestaurantIndex(state.restaurantList, restaurantId)
+      const restaurantIndex = getRestaurantIndex(state.restaurantList, restaurantId);
 
       state.restaurantList[restaurantIndex].ratings.push({ ...comment })
-      // push dans array restaurantList, en fonction de l'index du restaurant, et donc dans le sous-tableau ratings
     }
   },
   actions: {
