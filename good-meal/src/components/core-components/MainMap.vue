@@ -1,5 +1,11 @@
 <template>
-  <google-map @map-initialized="initialize" @map-bounds-changed="selectVisibleMarker" @map-clicked="openReadOrAddComponent">
+  <google-map
+    :center="customCenter"
+    :defaultCenter="defaultCenter"
+    @map-initialized="initialize"
+    @map-bounds-changed="selectVisibleMarker"
+    @map-clicked="openReadOrAddComponent"
+  >
     <template slot-scope="{ google, map }">
       <google-markers v-for="marker in markers" :marker="marker" :map="map" :google="google"></google-markers>
     </template>
@@ -29,17 +35,27 @@
         position: {
           lat: null,
           lng: null
+        },
+        defaultCenter: {
+          lat: 48.842702,
+          lng: 2.328434
+        },
+        customCenter: {
+          lat: null,
+          lng: null
         }
       }
     },
     mounted() {
-      this.askGeolocation();
-      this.clickOpenReadCommentsComponent();
+      // this.askGeolocation();
+      // this.clickOpenReadCommentsComponent();
     },
     methods: {
       initialize(data) {
         this.map = data.map
         this.google = data.google
+
+        this.askGeolocation()
       },
       askGeolocation() {
         if (navigator.geolocation) {
@@ -48,32 +64,35 @@
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
+            this.customCenter = pos
             this.userCoord = pos
             this.userMarker = {
               ...this.userMarker,
               position: pos,
             }
+            this.map.setCenter(this.customCenter)
+            // this.infoWindow.setPosition(pos);
+            // this.infoWindow.setContent('Location found.');
+            // this.infoWindow.open(this.map);
+            
+            this.setPlaces(pos);
 
-            this.infoWindow.setPosition(pos);
-            this.infoWindow.setContent('Location found.');
-            this.infoWindow.open(this.map);
-
-            this.map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, this.infoWindow, this.map.getCenter());
+          }, () => {
+            this.handleLocationError(true, this.defaultCenter);
           });
         } else {
           //           Browser doesn't support Geolocation
-          handleLocationError(false, this.infoWindow, this.map.getCenter());
+          this.handleLocationError(false, this.defaultCenter);
         }
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          this.infoWindow.setPosition(pos);
-          this.infoWindow.setContent(browserHasGeolocation ?
-            'Error: The Geolocation service failed.' :
-            'Error: Your browser doesn\'t support geolocation.');
-          this.infoWindow.open(this.map);
-        }
+      },
+      handleLocationError(browserHasGeolocation, pos) {
+        console.log(pos)
+        this.map.setCenter(pos)
+        // this.infoWindow.setPosition(pos);
+        // this.infoWindow.setContent(browserHasGeolocation ?
+        //   'Error: The Geolocation service failed.' :
+        //   'Error: Your browser doesn\'t support geolocation.');
+        // this.infoWindow.open(this.map);
       },
       addMarker(coord) {
         let icon = 'https://img.icons8.com/color/48/000000/marker.png';
@@ -89,6 +108,15 @@
         this.$store.commit('setBoundsValue', this.map.getBounds())
         this.$store.commit('selectVisibleRestaurant')
       },
+      setPlaces (location) {
+        this.infowindow = new google.maps.InfoWindow();
+        const service = new google.maps.places.PlacesServices(this.map);
+        service.nearbySearch({
+          location: location,
+          radius: 500,
+          type: ['restaurant']
+        }, callback);
+      },
       openReadOrAddComponent(event) {
         console.log(event.latLng);
         this.$emit('storeCoord', event.latLng);
@@ -103,14 +131,14 @@
         // this.markers.push(marker);
 
 
-        this.$router.push('/add-restaurant/');
+        this.$router.push({ path: '/add-restaurant/', query: { lat: event.latLng.lat(), lng: event.latLng.lng() }});
 
       },
-      clickOpenReadCommentsComponent() {
-        google.maps.event.addListener(this.marker, 'click', function() {
-          console.log('Ok');
-        });
-      }
+      // clickOpenReadCommentsComponent() {
+      //   this.google.maps.event.addListener(this.marker, 'click', function() {
+      //     console.log('Ok');
+      //   });
+      // }
     },
     computed: {
       markers() {

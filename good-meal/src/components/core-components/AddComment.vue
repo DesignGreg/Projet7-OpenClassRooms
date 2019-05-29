@@ -86,6 +86,7 @@
           restaurantId: this.$route.params.restaurantID,
           comment: this.comment
         });
+        this.$router.push('"/"');
       }
     },
     computed: {

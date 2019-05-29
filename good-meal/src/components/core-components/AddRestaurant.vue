@@ -30,7 +30,7 @@
                     <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="newRestaurant.description" required></textarea>
                   </div>
                   <div class="add__restaurant--button-container">
-                    <button-validate-form class="button-text" :onClick.prevent="sendNewRestaurant">Confirmer</button-validate-form>
+                    <button-validate-form class="button-text" :onClick.self="sendNewRestaurant">Confirmer</button-validate-form>
                   </div>
                 </div>
               </form>

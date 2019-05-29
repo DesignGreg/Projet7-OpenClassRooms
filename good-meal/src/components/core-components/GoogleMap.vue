@@ -13,7 +13,10 @@
 
   export default {
     name: 'google-map',
-    props: ['name'],
+    props: [
+      'name',
+      'defaultCenter'
+    ],
     data: function() {
       return {
         google: null,
@@ -44,10 +47,7 @@
       initMap() {
         const element = this.$refs.mainMap
         const options = {
-          center: {
-            lat: 48.842129,
-            lng: 2.329375
-          },
+          center: this.defaultCenter,
           zoom: 12,
         }
         this.map = new this.google.maps.Map(element, options);
@@ -72,7 +72,7 @@
 //          console.log('Ok');
 //        });
 //      }
-    },
+    }
   };
 </script>
 

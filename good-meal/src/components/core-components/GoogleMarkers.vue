@@ -34,6 +34,8 @@
         marker: this.marker,
         icon: this.getIconUrl(this.marker.type)
       })
+
+      this.mapMarker.addListner
     },
     beforeDestroy() {
       this.mapMarker.setMap(null)
