@@ -35,7 +35,7 @@
         icon: this.getIconUrl(this.marker.type)
       })
 
-      this.mapMarker.addListner
+//      this.mapMarker.addListener
     },
     beforeDestroy() {
       this.mapMarker.setMap(null)
@@ -56,20 +56,7 @@
         }
         return icon
       },
-//      drawMarkers() {
-//        this.mapMarker = new this.google.maps.Marker({
-//          position: this.marker.position,
-//          map: this.map,
-//          marker: this.marker,
-//          icon: this.getIconUrl(this.marker.type)
-//        })
-//      }
     },
-//    computed: {
-//      drawMarkers() {
-//        this.drawMarkers();
-//      }
-//    }
   }
 </script>
 

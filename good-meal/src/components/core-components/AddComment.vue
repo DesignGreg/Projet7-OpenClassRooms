@@ -81,7 +81,6 @@
         this.reloadComponent += 1;
       },
       sendNewComment() {
-        console.log('click')
         this.$store.commit('addComment', {
           restaurantId: this.$route.params.restaurantID,
           comment: this.comment

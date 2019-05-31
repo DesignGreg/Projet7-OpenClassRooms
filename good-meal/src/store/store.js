@@ -38,9 +38,9 @@ export const store = new Vuex.Store({
 
         const avgRating = ratings.reduce((acc, rating) => {
           return acc + (rating.stars / ratings.length);
-        }, 0)
+        }, 0);
         return Math.round(avgRating);
-      }
+      };
     }
   },
   mutations: {
@@ -55,10 +55,10 @@ export const store = new Vuex.Store({
         let isInMap = true;
         let isInRange = true;
         
-        if (bounds) {
-          isInMap = restaurant.long >= bounds.ia.j && restaurant.long <= bounds.ia.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l;
-          shouldBeVisible = shouldBeVisible && isInMap;
-        }
+//        if (bounds) {
+//          isInMap = restaurant.long >= bounds.ia.j && restaurant.long <= bounds.ia.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l;
+//          shouldBeVisible = shouldBeVisible && isInMap;
+//        }
         
         if (range && range.length === 2) {
           isInRange = restaurant.ratings[0].stars >= range[0] && restaurant.ratings[1].stars <= range[1];
@@ -76,7 +76,6 @@ export const store = new Vuex.Store({
       state.boundsValue = bounds;
     },
     setSortValue: (state, range) => {
-      // console.log(state, range)
       state.sortValue = range;
     },
     addRestaurant: (state, { newRestaurant }) => {

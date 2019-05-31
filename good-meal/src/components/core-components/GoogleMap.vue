@@ -40,8 +40,7 @@
       this.google = google
       this.initMap();
       this.addChangeBoundsListener();
-      this.clickOpenRestaurantComponent();
-//      this.clickOpenReadCommentsComponent();
+      this.openAddRestaurant();
     },
     methods: {
       initMap() {
@@ -62,16 +61,11 @@
           this.$emit('map-bounds-changed')
         })
       },
-      clickOpenRestaurantComponent() {
+      openAddRestaurant() {
         google.maps.event.addListener(this.map, 'click', (event) => {
-          this.$emit('map-clicked', event)
+          this.$emit('map-clicked', event);
         })
       },
-//      clickOpenReadCommentsComponent() {
-//        google.maps.event.addListener(this.marker, 'click', function() {
-//          console.log('Ok');
-//        });
-//      }
     }
   };
 </script>
