@@ -18,6 +18,7 @@
     },
     computed: {
       starEmpty () {
+        // starNumber = comment.stars
         return 5 - this.starNumber
       }
     }

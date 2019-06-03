@@ -10,8 +10,7 @@
 
 
 <script>
-
-  
+// Utilisation du plugin vue-slider-component
   
   export default {
     data: function() {

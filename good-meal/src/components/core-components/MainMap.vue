@@ -15,6 +15,7 @@
 <script>
   import GoogleMap from './GoogleMap'
   import GoogleMarkers from './GoogleMarkers'
+  
   export default {
     components: {
       GoogleMap,
@@ -47,12 +48,14 @@
       }
     },
     methods: {
+      // Vient de GoogleMap
       initialize(data) {
         this.map = data.map
         this.google = data.google
 
         this.askGeolocation()
       },
+      // Demande si l'utilisateur accepte la géolocalisation, et recentre la carte sur sa position si acceptée.
       askGeolocation() {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition((position) => {
@@ -80,20 +83,23 @@
         console.log(pos)
         this.map.setCenter(pos)
       },
-      addMarker(coord) {
-        let icon = 'https://img.icons8.com/color/48/000000/marker.png';
-        const position = new google.maps.LatLng(coord.lat, coord.lng);
-        const marker = new google.maps.Marker({
-          position,
-          map: this.map,
-          icon
-        });
-        this.marker = marker;
-      },
+//      addMarker(coord) {
+//        let icon = 'https://img.icons8.com/color/48/000000/marker.png';
+//        const position = new google.maps.LatLng(coord.lat, coord.lng);
+//        const marker = new google.maps.Marker({
+//          position,
+//          map: this.map,
+//          icon
+//        });
+//        this.marker = marker;
+//      },
+      
+      // selectVisibleRestaurant dépend du tri et de la zone d'affichage de la carte, et est utilisé par Map et List
       selectVisibleMarker() {
         this.$store.commit('setBoundsValue', this.map.getBounds())
         this.$store.commit('selectVisibleRestaurant')
       },
+      // ouvre le composant AddRestaurant avec lat et lng en query
       openAddRestaurant(event) {
         this.$router.push({ path: '/add-restaurant/', query: { lat: event.latLng.lat(), lng: event.latLng.lng() }});
       },
@@ -103,6 +109,7 @@
           console.log('I am clicked');
         });
       },
+      // Google Places
       setPlaces(location) {
         this.infowindow = new google.maps.InfoWindow();
         const service = new google.maps.places.PlacesServices(this.map);
@@ -114,6 +121,7 @@
       }
     },
     computed: {
+      // Génère les markers
       markers() {
         const markersArray = [
           ...this.$store.getters.getRestaurantList.map((restaurant, index) => {

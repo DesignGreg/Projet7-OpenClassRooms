@@ -45,15 +45,13 @@
     name: 'header-app',
     data: function() {
       return {
+        // Pour personnaliser précisément le style du titre
         titleFirstWordFirstLetter: "G",
         titleFirstWordOtherLetters: "ood",
         titleSecondWordFirstLetter: "M",
         titleSecondWordOtherLetters: "eal",
         image: require('../../assets/Chef_Hat_White.png')
       }
-    },
-    methods: {
-
     }
   }
 </script>

@@ -17,7 +17,6 @@
 
     data: function() {
       return {
-
       }
     },
     methods: {

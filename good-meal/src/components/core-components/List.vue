@@ -30,6 +30,7 @@
       ButtonSortRestaurants
     },
    computed: {
+     // Getters du Store qui retourne visibleRestaurant.
      getRestaurantList() {
        return this.$store.getters.getRestaurantList;
      }

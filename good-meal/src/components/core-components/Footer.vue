@@ -6,7 +6,8 @@
       <p class="footer__info--companyCity"> {{ companyCity }} </p>
     </div>
     <div class="footer__legalNotices">
-    <button-legal-notices :onClick="button">Mentions Légales</button-legal-notices>
+<!--    Si vrai composant LegalNotices derrière, ajout du :onClick avec method qui ouvre une autre page-->
+    <button-legal-notices>Mentions Légales</button-legal-notices>
     </div>
   </div>
 </template>
@@ -24,13 +25,7 @@
         companyCity: "75015 Paris"
       }
     },
-    methods: {
-      button: function() {
-        console.log('Working');
-      }
-    },
     components: {
-//      ButtonAddRestaurant,
       ButtonLegalNotices
     }
   }

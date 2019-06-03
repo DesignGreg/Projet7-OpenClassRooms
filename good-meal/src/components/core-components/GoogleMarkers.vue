@@ -34,24 +34,23 @@
         marker: this.marker,
         icon: this.getIconUrl(this.marker.type)
       })
-
-//      this.mapMarker.addListener
     },
     beforeDestroy() {
       this.mapMarker.setMap(null)
     },
     methods: {
+      // Dessiner les markers
       getIconUrl(markerType) {
         let icon
         switch (this.marker.type) {
           case 'restaurant':
-            icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png'
+            icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png';
             break;
           case 'user':
-            icon = 'https://img.icons8.com/color/48/000000/marker.png'
+            icon = 'https://img.icons8.com/color/48/000000/marker.png';
             break;
           default:
-            icon = 'https://img.icons8.com/ultraviolet/48/000000/record.png'
+            icon = 'https://img.icons8.com/ultraviolet/48/000000/record.png';
             break;
         }
         return icon

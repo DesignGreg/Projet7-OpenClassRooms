@@ -4,6 +4,7 @@ export default {
 
 const axios = require('axios');
 
+// Appel Axios à la liste restaurantList.json, réutilisée dans le Store.
 function getRestaurantList() {
   return axios
     .get('http://localhost:8080/restaurantList.json')

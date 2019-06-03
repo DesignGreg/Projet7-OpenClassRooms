@@ -10,14 +10,14 @@
           <div class="row row__first">
             <div class="col-6">
               <li class="aside__button-read-comment">
-                <button-read-comments :onClick="button">
-                  <router-link class="button-text" :to="`/read-comments/${restaurant.ID}`" >Les avis</router-link>
+                <button-read-comments>
+                  <router-link class="button-text" :to="`/read-comments/${restaurant.ID}`">Les avis</router-link>
                 </button-read-comments>
               </li>
             </div>
             <div class="col-6">
               <li class="aside__button-add-comment">
-                <button-add-comment :onClick="button">
+                <button-add-comment>
                   <router-link class="button-text" :to="`/add-comment/${restaurant.ID}`">Votre avis</router-link>
                 </button-add-comment>
               </li>
@@ -45,12 +45,8 @@
       ButtonAddComment,
       "score-app": ScoreStars
     },
-    methods: {
-      button: function() {
-        console.log('Working');
-      }
-    },
     computed: {
+      // Pour obtenir la moyenne des notes en temps réel si ajout de nouveaux commentaires
       averageRating () {
         return this.$store.getters.getRestaurantAvgRating(this.restaurant.ID)
       }

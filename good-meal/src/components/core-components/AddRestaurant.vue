@@ -30,7 +30,7 @@
                     <textarea class="add-restaurant__descriptionText" name="description" id="text" cols="30" rows="5" v-model="newRestaurant.description" required></textarea>
                   </div>
                   <div class="add__restaurant--button-container">
-                    <button-validate-form class="button-text" :onClick.self="sendNewRestaurant">Confirmer</button-validate-form>
+                    <button-validate-form class="button-text" :onClick.self="checkForm">Confirmer</button-validate-form>
                   </div>
                 </div>
               </form>
@@ -63,10 +63,21 @@
       ButtonValidateForm
     },
     methods: {
+      checkForm: function(e) {
+        // Contrôle les champs required du formulaire
+        if (this.newRestaurant.nom && this.newRestaurant.description && this.newRestaurant.adresse) {
+          this.sendNewRestaurant();
+        } else {
+          window.alert('Merci de renseigner le formulaire au complet');
+        }
+        e.preventDefault();
+      },
       sendNewRestaurant() {
+        // Ajout du nouveau restaurant au Store
         this.$store.commit('addRestaurant', {
           newRestaurant: this.newRestaurant
         });
+        // Ferme le composant AddRestaurant, évite de pouvoir envoyer plusieurs fois les mêmes données
         this.$router.push('"/"');
 
         console.log('Ok');

@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import restaurantFactory from '../interfaces/restaurantFactory';
-console.log(restaurantFactory);
 
 Vue.use(Vuex);
 
@@ -19,7 +18,7 @@ export const store = new Vuex.Store({
         const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
         console.log({id, restaurantIndex});
         return state.restaurantList[restaurantIndex];
-      }
+      };
     },
     getRestaurantList: state => {
       return state.visibleRestaurant;
@@ -65,10 +64,9 @@ export const store = new Vuex.Store({
           shouldBeVisible = shouldBeVisible && isInRange;
         }
         
-        console.log(restaurant.restaurantName, {
-          shouldBeVisible, isInMap, isInRange, avg: restaurant.ratings[0]
-        })
-
+//        console.log(restaurant.restaurantName, {
+//          shouldBeVisible, isInMap, isInRange, avg: restaurant.ratings[0]
+//        });
         return shouldBeVisible;
       });
     },

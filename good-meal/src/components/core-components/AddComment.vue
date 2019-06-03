@@ -37,7 +37,7 @@
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="comment.comment" required></textarea>
 
                 <div class="add__comments--button-container">
-                  <button-validate-form class="button-text" :onClick.self="sendNewComment">Confirmer</button-validate-form>
+                  <button-validate-form class="button-text" :onClick.self="checkForm">Confirmer</button-validate-form>
                 </div>
 
               </form>
@@ -73,23 +73,36 @@
       "set-score-app": SetScoreStars
     },
     methods: {
+      // reset des valeurs des input
       restore() {
-        this.nom = '';
-        this.commentaire = '';
-        this.rating = 0;
-        
+        this.comment.author = '';
+        this.comment.comment = '';
+        this.comment.stars = 0;
+        // https://michaelnthiessen.com/force-re-render, permet de reloader le composant si une valeur change, donc reset du score (stars)
         this.reloadComponent += 1;
       },
+      checkForm: function(e) {
+        if (this.comment.author && this.comment.comment) {
+          this.sendNewComment();
+        } else {
+          window.alert('Merci de renseigner votre prénom et votre commentaire.');
+        }
+        e.preventDefault();
+      },
+      // Envoie le nouveau commentaire au store
       sendNewComment() {
         this.$store.commit('addComment', {
           restaurantId: this.$route.params.restaurantID,
           comment: this.comment
         });
+        // ferme le composant AddComment, évite de pouvoir envoyer plusieurs fois les mêmes données
         this.$router.push('"/"');
       }
     },
     computed: {
+      // load les nouvelles données en fonction de l'ID du restaurant
       restaurantData() {
+        // force la remise à zéro des données du formulaires
         this.restore();
         return this.$store.getters.getRestaurantById(this.$route.params.restaurantID)
       }
