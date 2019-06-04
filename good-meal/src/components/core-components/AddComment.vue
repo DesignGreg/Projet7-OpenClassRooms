@@ -78,7 +78,7 @@
         this.comment.author = '';
         this.comment.comment = '';
         this.comment.stars = 0;
-        // https://michaelnthiessen.com/force-re-render, permet de reloader le composant si une valeur change, donc reset du score (stars)
+        // https://michaelnthiessen.com/force-re-render, permet de reloader le composant si une valeur du key change, donc reset du score (stars)
         this.reloadComponent += 1;
       },
       checkForm: function(e) {

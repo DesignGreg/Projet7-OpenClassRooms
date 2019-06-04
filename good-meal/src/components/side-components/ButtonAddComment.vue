@@ -1,6 +1,6 @@
 <template>
  <div class="button__container">
-    <button class="button button__add-comment" type="button" v-bind:click="onClick">
+    <button class="button button__add-comment" type="button">
       <slot></slot>
     </button>
   </div>
@@ -9,12 +9,6 @@
 
 <script>
   export default {
-    props: {
-      onClick: {
-        type: Function,
-        required: true
-      }
-    }
   }
 </script>
 

@@ -13,7 +13,7 @@
           </div>
           <div class="row row__second">
             <div class="col-12">
-              <form action="" method="post" class="add-restaurant__form" @sendNewRestaurant="storeCoord">
+              <form action="" method="post" class="add-restaurant__form">
                 <div class="row row__third">
                   <div class="col-6">
                     <label class="add-restaurant__nameLabel" for="name">Nom</label>
@@ -62,6 +62,10 @@
     components: {
       ButtonValidateForm
     },
+    created() {
+      this.newRestaurant.lat = this.$route.query.lat;
+      this.newRestaurant.lng = this.$route.query.lng;
+    },
     methods: {
       checkForm: function(e) {
         // Contrôle les champs required du formulaire
@@ -80,19 +84,22 @@
         // Ferme le composant AddRestaurant, évite de pouvoir envoyer plusieurs fois les mêmes données
         this.$router.push('"/"');
 
-        console.log('Ok');
+        console.log('Sent');
         console.log(this.newRestaurant.nom);
         console.log(this.newRestaurant.description);
         console.log(this.newRestaurant.adresse);
         console.log(this.newRestaurant.lat);
         console.log(this.newRestaurant.lng);
       },
-      storeCoord() {
-        this.newRestaurant.lat = '5';
-        this.newRestaurant.lng = '5';
-        console.log(this.lat);
-        console.log(this.lng);
-        console.log('Ok');
+      restore() {
+        this.newRestaurant.nom = '';
+        this.newRestaurant.description = '';
+        this.newRestaurant.adresse = '';
+      },
+    },
+    watch: {
+      '$route.query.lat'() {
+        this.restore();
       }
     }
   }

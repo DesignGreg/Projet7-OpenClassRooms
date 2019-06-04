@@ -1,6 +1,6 @@
 <template>
   <div class="legal-notices__container">
-    <button class="button button__legal-notices" type="button" v-bind:click="onClick">
+    <button class="button button__legal-notices" type="button">
       <slot></slot>
     </button>
   </div>
@@ -9,12 +9,6 @@
 
 <script>
   export default {
-    props: {
-      onClick: {
-        type: Function,
-        required: true
-      }
-    }
   }
 </script>
 

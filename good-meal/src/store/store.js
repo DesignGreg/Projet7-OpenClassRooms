@@ -26,7 +26,6 @@ export const store = new Vuex.Store({
     getSortValue: (state) => {
       return state.sortValue;
     },
-    
     getBoundsValue: (state) => {
       return state.boundsValue;
     },
