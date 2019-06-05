@@ -8,6 +8,7 @@
   >
     <template slot-scope="{ google, map }">
       <google-markers v-for="marker in markers" :marker="marker" :map="map" :google="google"></google-markers>
+      <google-markers v-if="userMarker !== {}" :marker="userMarker" :map="map" :google="google"></google-markers>
     </template>
   </google-map>
 </template>

@@ -17,7 +17,7 @@
                 <div class="row row__third">
                   <div class="col-6">
                     <label class="add-restaurant__nameLabel" for="name">Nom</label>
-                    <input class="add-restaurant__nameInput" size="30" type="text" name="name" id="name" v-model="newRestaurant.nom" required>
+                    <input class="add-restaurant__nameInput" size="30" type="text" name="name" id="name" v-model="newRestaurant.restaurantName" required>
                   </div>
                   <div class="col-6">
                     <label class="add-restaurant__adresseLabel" for="name">Adresse</label>
@@ -51,11 +51,11 @@
     data: function() {
       return {
         newRestaurant: {
-          nom: '',
+          restaurantName: '',
           description: '',
           adresse: '',
           lat: null,
-          lng: null
+          long: null
         }
       }
     },
@@ -64,12 +64,12 @@
     },
     created() {
       this.newRestaurant.lat = this.$route.query.lat;
-      this.newRestaurant.lng = this.$route.query.lng;
+      this.newRestaurant.long = this.$route.query.lng;
     },
     methods: {
       checkForm: function(e) {
         // Contrôle les champs required du formulaire
-        if (this.newRestaurant.nom && this.newRestaurant.description && this.newRestaurant.adresse) {
+        if (this.newRestaurant.restaurantName && this.newRestaurant.description && this.newRestaurant.adresse) {
           this.sendNewRestaurant();
         } else {
           window.alert('Merci de renseigner le formulaire au complet');
@@ -85,14 +85,14 @@
         this.$router.push('"/"');
 
         console.log('Sent');
-        console.log(this.newRestaurant.nom);
+        console.log(this.newRestaurant.restaurantName);
         console.log(this.newRestaurant.description);
         console.log(this.newRestaurant.adresse);
         console.log(this.newRestaurant.lat);
-        console.log(this.newRestaurant.lng);
+        console.log(this.newRestaurant.long);
       },
       restore() {
-        this.newRestaurant.nom = '';
+        this.newRestaurant.restaurantName = '';
         this.newRestaurant.description = '';
         this.newRestaurant.adresse = '';
       },
