@@ -21,7 +21,7 @@
                   </div>
                   <div class="col-6">
                     <label class="add-restaurant__adresseLabel" for="name">Adresse</label>
-                    <textarea class="add-restaurant__adresseText" name="Adresse" id="text" cols="30" rows="3" v-model="newRestaurant.adresse" required></textarea>
+                    <textarea class="add-restaurant__adresseText" name="adresse" id="text" cols="30" rows="3" v-model="newRestaurant.address" required></textarea>
                   </div>
                 </div>
                 <div class="row row__fourth">
@@ -53,7 +53,7 @@
         newRestaurant: {
           restaurantName: '',
           description: '',
-          adresse: '',
+          address: '',
           lat: null,
           long: null
         }
@@ -69,7 +69,7 @@
     methods: {
       checkForm: function(e) {
         // Contrôle les champs required du formulaire
-        if (this.newRestaurant.restaurantName && this.newRestaurant.description && this.newRestaurant.adresse) {
+        if (this.newRestaurant.restaurantName && this.newRestaurant.description && this.newRestaurant.address) {
           this.sendNewRestaurant();
         } else {
           window.alert('Merci de renseigner le formulaire au complet');

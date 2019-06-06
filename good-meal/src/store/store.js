@@ -17,6 +17,7 @@ export const store = new Vuex.Store({
       return (id) => {
         const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
         console.log({id, restaurantIndex});
+        // return state.restaurantList[id-1];
         return state.restaurantList[restaurantIndex];
       };
     },
@@ -32,7 +33,7 @@ export const store = new Vuex.Store({
     getRestaurantAvgRating: (state) => {
       return (id) => {
         const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
-        console.log(restaurantIndex)
+        // console.log(restaurantIndex)
         const { ratings } = state.restaurantList[restaurantIndex];
 
         const avgRating = ratings.reduce((acc, rating) => {
@@ -60,13 +61,15 @@ export const store = new Vuex.Store({
        }
         
         if (range && range.length === 2) {
+          // const avgRating = this.getRestaurantAvgRating();
+          // console.log(avgRating);
           isInRange = restaurant.ratings[0].stars >= range[0] && restaurant.ratings[1].stars <= range[1];
           shouldBeVisible = shouldBeVisible && isInRange;
         }
         
-//        console.log(restaurant.restaurantName, {
-//          shouldBeVisible, isInMap, isInRange, avg: restaurant.ratings[0]
-//        });
+       console.log(restaurant.restaurantName, {
+         shouldBeVisible, isInMap, isInRange, avg: restaurant.ratings[0]
+       });
         return shouldBeVisible;
       });
     },
@@ -79,7 +82,7 @@ export const store = new Vuex.Store({
     addRestaurant: (state, { newRestaurant }) => {
       console.log('store', { ...newRestaurant })
 
-      const restaurantToAdd = { ...newRestaurant, ratings: [], id: getLastId()}
+      const restaurantToAdd = { ...newRestaurant, ratings: [], ID: getLastId()}
 
       state.restaurantList.push(restaurantToAdd)
       state.visibleRestaurant.push(restaurantToAdd)

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  // Utilisation du plugin pour charter de manière asynchrone l'API
+  // Utilisation du plugin pour charger de manière asynchrone l'API
   const GoogleMapsAPILoader = require('google-maps-api-loader');
 
   export default {

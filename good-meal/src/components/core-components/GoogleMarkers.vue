@@ -38,6 +38,9 @@
     beforeDestroy() {
       this.mapMarker.setMap(null)
     },
+    afterDestroy() {
+      this.refreshIcon;
+    },
     methods: {
       // Dessiner les markers
       getIconUrl(markerType) {
@@ -56,6 +59,16 @@
         return icon
       },
     },
+    computed: {
+      refreshIcon() {
+        this.mapMarker = new this.google.maps.Marker({
+        position: this.marker.position,
+        map: this.map,
+        marker: this.marker,
+        icon: this.getIconUrl(this.marker.type)
+      })
+      }
+    }
   }
 </script>
 
