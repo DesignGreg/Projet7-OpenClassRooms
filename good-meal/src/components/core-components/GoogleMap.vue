@@ -28,16 +28,12 @@
         map: null,
         bounds: null,
         infoWindow: null,
-        position: {
-          lat: null,
-          lng: null
-        }
       }
     },
 
     async mounted() {
       const google = await GoogleMapsAPILoader({
-        apiKey: ''
+        apiKey: '&libraries=places'
       })
       this.google = google
       this.initMap();

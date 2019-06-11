@@ -3,7 +3,7 @@
       <ul class="aside__list">
         <li class="aside__name"> {{ restaurant.restaurantName }}</li>
         <li class="aside__score">
-          <score-app :star-number="averageRating"></score-app>
+          <score-app :star-number="restaurant.avgRating"></score-app>
         </li>
         <li class="aside__description"> {{ restaurant.description }} </li>
         <div class="container">
@@ -44,12 +44,6 @@
       ButtonReadComments,
       ButtonAddComment,
       "score-app": ScoreStars
-    },
-    computed: {
-      // Pour obtenir la moyenne des notes en temps réel si ajout de nouveaux commentaires
-      averageRating () {
-        return this.$store.getters.getRestaurantAvgRating(this.restaurant.ID)
-      }
     }
   }
 </script>

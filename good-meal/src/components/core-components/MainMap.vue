@@ -1,11 +1,5 @@
 <template>
-  <google-map
-    :center="customCenter"
-    :defaultCenter="defaultCenter"
-    @map-initialized="initialize"
-    @map-bounds-changed="selectVisibleMarker"
-    @map-clicked="openAddRestaurant"
-  >
+  <google-map :center="customCenter" :defaultCenter="defaultCenter" @map-initialized="initialize" @map-bounds-changed="selectVisibleMarker" @map-clicked="openAddRestaurant">
     <template slot-scope="{ google, map }">
       <google-markers v-for="marker in markers" :marker="marker" :map="map" :google="google"></google-markers>
       <google-markers v-if="userMarker !== {}" :marker="userMarker" :map="map" :google="google"></google-markers>
@@ -16,7 +10,7 @@
 <script>
   import GoogleMap from './GoogleMap'
   import GoogleMarkers from './GoogleMarkers'
-  
+
   export default {
     components: {
       GoogleMap,
@@ -31,6 +25,7 @@
           type: 'user'
         },
         marker: null,
+        markersPlaces: [],
         map: null,
         bounds: null,
         infoWindow: null,
@@ -84,17 +79,6 @@
         console.log(pos)
         this.map.setCenter(pos)
       },
-//      addMarker(coord) {
-//        let icon = 'https://img.icons8.com/color/48/000000/marker.png';
-//        const position = new google.maps.LatLng(coord.lat, coord.lng);
-//        const marker = new google.maps.Marker({
-//          position,
-//          map: this.map,
-//          icon
-//        });
-//        this.marker = marker;
-//      },
-      
       // selectVisibleRestaurant dépend du tri et de la zone d'affichage de la carte, et est utilisé par Map et List
       selectVisibleMarker() {
         this.$store.commit('setBoundsValue', this.map.getBounds())
@@ -102,23 +86,39 @@
       },
       // ouvre le composant AddRestaurant avec lat et lng en query
       openAddRestaurant(event) {
-        this.$router.push({ path: '/add-restaurant/', query: { lat: event.latLng.lat(), lng: event.latLng.lng() }});
+        this.$router.push({
+          path: '/add-restaurant/',
+          query: {
+            lat: event.latLng.lat(),
+            lng: event.latLng.lng()
+          }
+        });
       },
       // Ajout Event Listener sur les markers
       openReadComments() {
-        google.maps.event.addListener(this.Marker, 'click', (event) => {
+        google.maps.event.addListener(this.userMarker, 'click', (event) => {
           console.log('I am clicked');
         });
+
+        // this.marker.addListener('click', function () {
+        //   console.log('clicked');
+        // });
       },
       // Google Places
+      callback(results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+          for (var i = 0; i < results.length; i++) {
+            this.createMarker(results[i]);
+          }
+        }
+      },
       setPlaces(location) {
-        this.infowindow = new google.maps.InfoWindow();
-        const service = new google.maps.places.PlacesServices(this.map);
-        service.nearbySearch({
-          location: location,
-          radius: 500,
-          type: ['restaurant']
-        }, callback);
+        const service = new google.maps.places.PlacesService(this.map);
+
+        this.$store.dispatch('getData', {
+          service,
+          location
+        })
       }
     },
     computed: {
@@ -127,7 +127,7 @@
         const markersArray = [
           ...this.$store.getters.getRestaurantList.map((restaurant, index) => {
             return {
-              id: index,
+              id: restaurant.ID,
               position: {
                 lat: parseFloat(restaurant.lat),
                 lng: parseFloat(restaurant.long),

@@ -16,7 +16,7 @@
                 </li>
 
                 <li>
-                  <score-app :star-number="averageRating"></score-app>
+                  <score-app :star-number="restaurantData.avgRating"></score-app>
                 </li>
 
                 <li>
@@ -61,11 +61,6 @@
       restaurantData () {
         // Pour afficher les données du restaurant en fonction de l'ID de celui-ci
         return this.$store.getters.getRestaurantById(this.$route.params.restaurantID)
-      },
-      averageRating () {
-        // Pour calculer et afficher la moyenne des notes du restaurant en fonction de l'ID de celui-ci
-        return this.$store.getters.getRestaurantAvgRating(this.$route.params.restaurantID)
-
       }
     }
   }

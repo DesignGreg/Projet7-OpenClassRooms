@@ -34,6 +34,15 @@
         marker: this.marker,
         icon: this.getIconUrl(this.marker.type)
       })
+
+      this.mapMarker.addListener('click', () => {
+          if (this.marker.type !== 'user') {
+            console.log('yata')
+            this.$router.push({
+              path: `/read-comments/${this.marker.id}`
+            });
+          }
+        });
     },
     beforeDestroy() {
       this.mapMarker.setMap(null)
@@ -57,7 +66,7 @@
             break;
         }
         return icon
-      },
+      }
     },
     computed: {
       refreshIcon() {

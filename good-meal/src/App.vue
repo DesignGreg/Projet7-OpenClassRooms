@@ -39,10 +39,6 @@
       "header-app": Header,
       "list-app": List,
       "footer-app": Footer
-    },
-    mounted() {
-      // Appel l'action getData du Store, elle-même appelant getRestaurantList de restaurantFactory.js du dossier interfaces.
-      this.$store.dispatch('getData')
     }
   }
 </script>
