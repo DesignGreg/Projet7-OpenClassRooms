@@ -70,9 +70,11 @@
 
           }, () => {
             this.handleLocationError(true, this.defaultCenter);
+            this.setPlaces(this.defaultCenter);
           });
         } else {
           this.handleLocationError(false, this.defaultCenter);
+          this.setPlaces(this.defaultCenter);
         }
       },
       handleLocationError(browserHasGeolocation, pos) {
