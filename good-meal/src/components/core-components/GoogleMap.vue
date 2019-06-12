@@ -30,12 +30,13 @@
         infoWindow: null,
       }
     },
-
+    // Petit plugin pour loader de manière asynchrone l'API Google et éviter des erreurs
     async mounted() {
       const google = await GoogleMapsAPILoader({
         apiKey: '&libraries=places'
       })
       this.google = google
+      // Appel de InitMap, et des listeners
       this.initMap();
       this.addChangeBoundsListener();
       this.openAddRestaurant();

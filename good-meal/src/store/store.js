@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
     boundsValue: {}
   },
   getters: {
+    // Obtenir l'ID des restaurants
     getRestaurantById: (state) => {
       return (id) => {
         const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
@@ -20,7 +21,6 @@ export const store = new Vuex.Store({
           id,
           restaurantIndex
         });
-        // return state.restaurantList[id-1];
         return state.restaurantList[restaurantIndex];
       };
     },
@@ -33,18 +33,17 @@ export const store = new Vuex.Store({
     getBoundsValue: (state) => {
       return state.boundsValue;
     },
-    getRestaurantAvgRating: (state) => {
-      return (id) => {
-        const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
-        // console.log(restaurantIndex)
-        const {
-          ratings
-        } = state.restaurantList[restaurantIndex];
+    // Calcul de la moyenne des notes données en commentaires
+    // getRestaurantAvgRating: (state) => {
+    //   return (id) => {
+    //     const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
+    //     const {
+    //       ratings
+    //     } = state.restaurantList[restaurantIndex];
 
-        
-        return computeAvgRatings(ratings)
-      };
-    }
+    //     return computeAvgRatings(ratings)
+    //   };
+    // }
   },
   mutations: {
     setRestaurantList: (state, {
@@ -52,6 +51,7 @@ export const store = new Vuex.Store({
     }) => {
       state.restaurantList = list;
     },
+    // Définit les restaurants à afficher en fonction des limites de la carte et du tri par moyenne
     selectVisibleRestaurant(state) {
       const bounds = state.boundsValue;
       const range = state.sortValue;
@@ -59,12 +59,12 @@ export const store = new Vuex.Store({
         let shouldBeVisible = true;
         let isInMap = true;
         let isInRange = true;
-
+        // Limites cartes
         if (bounds) {
           isInMap = restaurant.long >= bounds.ga.j && restaurant.long <= bounds.ga.l && restaurant.lat >= bounds.na.j && restaurant.lat <= bounds.na.l;
           shouldBeVisible = shouldBeVisible && isInMap;
         }
-
+        // Moyenne des notes
         if (range && range.length === 2) {
           isInRange = restaurant.avgRating >= range[0] && restaurant.avgRating <= range[1];
           shouldBeVisible = shouldBeVisible && isInRange;
@@ -79,6 +79,7 @@ export const store = new Vuex.Store({
     setSortValue: (state, range) => {
       state.sortValue = range;
     },
+    // Ajoute un restaurant en ajoutant automatiquement un champ avgRating et un ID (le dernier +1)
     addRestaurant: (state, { newRestaurant }) => {
 
       const ratings = newRestaurant.ratings || []
@@ -104,6 +105,7 @@ export const store = new Vuex.Store({
         return lastId + 1
       }
     },
+    // Ajoute un commentaire
     addComment: (state, {
       restaurantId,
       comment
@@ -113,8 +115,12 @@ export const store = new Vuex.Store({
       state.restaurantList[restaurantIndex].ratings.push({
         ...comment
       })
+
+      const restaurantRating = computeAvgRatings(state.restaurantList[restaurantIndex].ratings);
+      state.restaurantList[restaurantIndex].avgRating = restaurantRating;
     }
   },
+  // Fait appel à restaurantFactory et ajoute les restaurants de la liste JSON et de GooglePlaces
   actions: {
     getData: async function (context, { service, location }) {
       const restaurantList = await restaurantFactory.getRestaurantList(service, location)
@@ -124,11 +130,12 @@ export const store = new Vuex.Store({
   }
 });
 
+// Fonction helper pour getRestaurantById
 function getRestaurantIndex(restaurantList, id) {
   return restaurantList
     .findIndex((restaurant) => restaurant.ID === parseInt(id))
 }
-
+// Fonction helper pour getRestaurantAvgRating
 function computeAvgRatings (ratings) {
   const avgRating = ratings.reduce((acc, rating) => {
     return acc + (rating.stars / ratings.length);

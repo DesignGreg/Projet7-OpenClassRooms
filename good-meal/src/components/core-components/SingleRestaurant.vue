@@ -44,7 +44,7 @@
       ButtonReadComments,
       ButtonAddComment,
       "score-app": ScoreStars
-    }
+    },
   }
 </script>
 

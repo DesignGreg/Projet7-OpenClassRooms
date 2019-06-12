@@ -76,7 +76,6 @@
         }
       },
       handleLocationError(browserHasGeolocation, pos) {
-        console.log(pos)
         this.map.setCenter(pos)
       },
       // selectVisibleRestaurant dépend du tri et de la zone d'affichage de la carte, et est utilisé par Map et List
@@ -105,16 +104,9 @@
         // });
       },
       // Google Places
-      callback(results, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          for (var i = 0; i < results.length; i++) {
-            this.createMarker(results[i]);
-          }
-        }
-      },
       setPlaces(location) {
         const service = new google.maps.places.PlacesService(this.map);
-
+        // Appel l'action getData du Store
         this.$store.dispatch('getData', {
           service,
           location
