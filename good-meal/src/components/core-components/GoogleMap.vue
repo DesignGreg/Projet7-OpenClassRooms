@@ -60,13 +60,13 @@
       },
       addChangeBoundsListener() {
         // Pour utiliser les bounds pour l'affichage des restaurants dans la liste
-        google.maps.event.addListener(this.map, 'bounds_changed', (event) => {
+        this.google.maps.event.addListener(this.map, 'bounds_changed', () => {
           this.$emit('map-bounds-changed')
         })
       },
       openAddRestaurant() {
         // Emet l'event pour ajouter un restaurant au click sur la carte
-        google.maps.event.addListener(this.map, 'click', (event) => {
+        this.google.maps.event.addListener(this.map, 'click', (event) => {
           this.$emit('map-clicked', event);
         })
       },
