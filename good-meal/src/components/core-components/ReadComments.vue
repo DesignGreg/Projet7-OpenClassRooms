@@ -25,6 +25,11 @@
                 <li>
                   <p class="row__first--restaurantAddress"> {{ restaurantData.address }} </p>
                 </li>
+
+                <button-add-comment class="button">
+                  <router-link class="button-text" :to="`/add-comment/${restaurantData.ID}`">Votre avis</router-link>
+                </button-add-comment>
+
               </ul>
             </div>
             
@@ -71,6 +76,18 @@
     .row__first--restaurantComments {
     font-size: 1.5rem !important;
     }
+
+    .button {
+      padding-top: 1rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .button-text {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #EBEBEB;
+    }
   }
   
   @media screen and (min-width: 446px) and (max-width: 768px) {
@@ -80,6 +97,46 @@
 
     .read-comments__data {
       padding: 1rem !important;
+    }
+
+    .button {
+      padding-top: 1rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .button-text {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #EBEBEB;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1200px) {
+    .button {
+      padding-top: 1rem;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .button-text {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #EBEBEB;
+    }
+  }
+
+   @media screen and (min-width: 1200px){
+    .button {
+      padding-top: 1rem;
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    .button-text {
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #EBEBEB;
     }
   }
 
@@ -136,6 +193,7 @@
 
   .row__first--restaurantComments {
     font-size: 2rem;
+    overflow-wrap: break-word;
   }
 
   .fa-arrow-circle-down {

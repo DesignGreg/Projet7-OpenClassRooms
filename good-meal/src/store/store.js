@@ -33,17 +33,6 @@ export const store = new Vuex.Store({
     getBoundsValue: (state) => {
       return state.boundsValue;
     },
-    // Calcul de la moyenne des notes données en commentaires
-    // getRestaurantAvgRating: (state) => {
-    //   return (id) => {
-    //     const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
-    //     const {
-    //       ratings
-    //     } = state.restaurantList[restaurantIndex];
-
-    //     return computeAvgRatings(ratings)
-    //   };
-    // }
   },
   mutations: {
     setRestaurantList: (state, {

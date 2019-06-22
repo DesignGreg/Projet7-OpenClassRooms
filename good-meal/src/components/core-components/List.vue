@@ -91,8 +91,6 @@
     float: right;
   }
 
-  .aside__data {}
-
   .aside__list {
     list-style-type: none;
     margin-top: 3rem;

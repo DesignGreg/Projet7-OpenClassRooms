@@ -1,7 +1,7 @@
 <template>
   <google-map :center="customCenter" :defaultCenter="defaultCenter" @map-initialized="initialize" @map-bounds-changed="selectVisibleMarker" @map-clicked="openAddRestaurant">
     <template slot-scope="{ google, map }">
-      <google-markers v-for="marker in markers" :marker="marker" :map="map" :google="google"></google-markers>
+      <google-markers v-for="marker in markers" :key='marker' :marker="marker" :map="map" :google="google"></google-markers>
       <google-markers v-if="userMarker !== {}" :marker="userMarker" :map="map" :google="google"></google-markers>
     </template>
   </google-map>
@@ -25,7 +25,6 @@
           type: 'user'
         },
         marker: null,
-        markersPlaces: [],
         map: null,
         bounds: null,
         infoWindow: null,
@@ -95,19 +94,9 @@
           }
         });
       },
-      // Ajout Event Listener sur les markers
-      openReadComments() {
-        google.maps.event.addListener(this.userMarker, 'click', (event) => {
-          console.log('I am clicked');
-        });
-
-        // this.marker.addListener('click', function () {
-        //   console.log('clicked');
-        // });
-      },
       // Google Places
       setPlaces(location) {
-        const service = new google.maps.places.PlacesService(this.map);
+        const service = new this.google.maps.places.PlacesService(this.map);
         // Appel l'action getData du Store
         this.$store.dispatch('getData', {
           service,
@@ -119,7 +108,7 @@
       // Génère les markers
       markers() {
         const markersArray = [
-          ...this.$store.getters.getRestaurantList.map((restaurant, index) => {
+          ...this.$store.getters.getRestaurantList.map((restaurant) => {
             return {
               id: restaurant.ID,
               position: {
