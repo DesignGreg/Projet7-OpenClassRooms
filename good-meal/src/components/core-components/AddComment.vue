@@ -37,7 +37,7 @@
                 <textarea class="add-comment__text" name="comment" id="text" cols="30" rows="8" v-model="comment.comment" required></textarea>
 
                 <div class="add__comments--button-container">
-                  <button-validate-form class="button-text" :onClick.self="checkForm">Confirmer</button-validate-form>
+                  <button-validate-form class="button-text" :onClick="checkForm">Confirmer</button-validate-form>
                 </div>
 
               </form>

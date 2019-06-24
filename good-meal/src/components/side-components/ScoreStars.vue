@@ -1,7 +1,7 @@
 <template>
   <div class="score__container" ref="score-container">
-    <span class="full-star fa fa-star checked" v-for="(star, key) in starNumber"></span>
-    <span class="empty-star fa fa-star" v-for="(star, key) in starEmpty"></span>
+    <span class="full-star fa fa-star checked" v-for="star in starNumber" :key='star'></span>
+    <span class="empty-star fa fa-star" v-for="star in starEmpty" :key='star'></span>
   </div>
 </template>
 
