@@ -17,10 +17,10 @@ export const store = new Vuex.Store({
     getRestaurantById: (state) => {
       return (id) => {
         const restaurantIndex = getRestaurantIndex(state.restaurantList, id);
-        console.log({
-          id,
-          restaurantIndex
-        });
+        // console.log({
+        //   id,
+        //   restaurantIndex
+        // });
         return state.restaurantList[restaurantIndex];
       };
     },
@@ -113,7 +113,7 @@ export const store = new Vuex.Store({
   actions: {
     getData: async function (context, { service, location }) {
       const restaurantList = await restaurantFactory.getRestaurantList(service, location)
-
+      console.log(restaurantList)
       restaurantList.forEach((newRestaurant) => context.commit('addRestaurant', { newRestaurant }))
     },
   }

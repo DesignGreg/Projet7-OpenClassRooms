@@ -57,7 +57,6 @@
             icon = 'https://img.icons8.com/ios/50/000000/restaurant-table.png';
             break;
           case 'user':
-            console.log('user')
             icon = 'https://img.icons8.com/color/48/000000/marker.png';
             break;
           default:

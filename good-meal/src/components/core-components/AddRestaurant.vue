@@ -83,13 +83,6 @@
         });
         // Ferme le composant AddRestaurant, évite de pouvoir envoyer plusieurs fois les mêmes données
         this.$router.push('"/"');
-
-        console.log('Sent');
-        console.log(this.newRestaurant.restaurantName);
-        console.log(this.newRestaurant.description);
-        console.log(this.newRestaurant.adresse);
-        console.log(this.newRestaurant.lat);
-        console.log(this.newRestaurant.long);
       },
       restore() {
         this.newRestaurant.restaurantName = '';
